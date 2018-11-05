@@ -9,6 +9,8 @@ public class State {
 
     private String name;
 
+    private List<Event> events;
+
     public String getName() {
         return name;
     }
@@ -16,8 +18,6 @@ public class State {
     public void setName(String name) {
         this.name = name;
     }
-
-    private List<Event> events;
 
     public List<Event> getEvents() {
         return events;
