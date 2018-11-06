@@ -9,6 +9,7 @@ public class Sequence {
 
     ArrayList<Event> sequence;
 
+
     public Sequence(){
         sequence = new ArrayList<Event>();
     }
