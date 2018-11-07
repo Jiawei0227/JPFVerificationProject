@@ -24,4 +24,11 @@ public abstract class State {
     public void setId(String id) {
         this.id = id;
     }
+
+    public State(){}
+
+    public State(String name, String id) {
+        this.name = name;
+        this.id = id;
+    }
 }

@@ -14,6 +14,14 @@ public class Transition {
 
     Event event;
 
+    public Transition(){}
+
+    public Transition(State fromState, State toState, Event event) {
+        this.fromState = fromState;
+        this.toState = toState;
+        this.event = event;
+    }
+
     public State getFromState() {
         return fromState;
     }

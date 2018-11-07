@@ -19,5 +19,11 @@ public abstract class Event {
         this.name = name;
     }
 
+    public Predicate getPredicate() {
+        return predicate;
+    }
 
+    public void setPredicate(Predicate predicate) {
+        this.predicate = predicate;
+    }
 }
