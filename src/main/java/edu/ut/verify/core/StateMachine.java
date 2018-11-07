@@ -1,5 +1,7 @@
 package edu.ut.verify.core;
 
+import edu.ut.verify.core.state.State;
+
 /**
  * Created by Jerry Wang on 2018/11/5.
  */
@@ -18,14 +20,29 @@ public class StateMachine {
 
     private State currentState;
 
+    public State getCurrentState() {
+        return currentState;
+    }
+
+    public void setCurrentState(State currentState) {
+        this.currentState = currentState;
+    }
+
     /**
      * Use Verify jpf to search all the path
      * @param e
      */
-    private void goNextState(Event e){
+    private void goNextState(Transition e){
         sequence.addEvent(e);
     }
 
+    public StateChart getStateChart() {
+        return stateChart;
+    }
+
+    public void setStateChart(StateChart stateChart) {
+        this.stateChart = stateChart;
+    }
 
 
 }

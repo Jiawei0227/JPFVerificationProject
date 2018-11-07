@@ -1,49 +1,44 @@
 package edu.ut.verify.core;
 
+import edu.ut.verify.core.state.EndState;
+import edu.ut.verify.core.state.StartState;
+import edu.ut.verify.core.state.State;
+
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Jerry Wang on 2018/11/5.
  */
 public class StateChart {
 
-    private State startState;
+    private StartState startState;
 
-    private State endState;
+    private EndState endState;
 
-    private List<State> stateList;
+    private Map<State, List<Transition>> stateTransitionMap;
 
-    private List<Event> eventList;
-
-    public State getStartState() {
+    public StartState getStartState() {
         return startState;
     }
 
-    public void setStartState(State startState) {
+    public void setStartState(StartState startState) {
         this.startState = startState;
     }
 
-    public State getEndState() {
+    public EndState getEndState() {
         return endState;
     }
 
-    public void setEndState(State endState) {
+    public void setEndState(EndState endState) {
         this.endState = endState;
     }
 
-    public List<State> getStateList() {
-        return stateList;
+    public Map<State, List<Transition>> getStateTransitionMap() {
+        return stateTransitionMap;
     }
 
-    public void setStateList(List<State> stateList) {
-        this.stateList = stateList;
-    }
-
-    public List<Event> getEventList() {
-        return eventList;
-    }
-
-    public void setEventList(List<Event> eventList) {
-        this.eventList = eventList;
+    public void setStateTransitionMap(Map<State, List<Transition>> stateTransitionMap) {
+        this.stateTransitionMap = stateTransitionMap;
     }
 }

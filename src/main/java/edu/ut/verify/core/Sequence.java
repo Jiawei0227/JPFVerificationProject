@@ -7,22 +7,22 @@ import java.util.ArrayList;
  */
 public class Sequence {
 
-    ArrayList<Event> sequence;
+    ArrayList<Transition> sequence;
 
 
     public Sequence(){
-        sequence = new ArrayList<Event>();
+        sequence = new ArrayList<Transition>();
     }
 
-    public ArrayList<Event> getSequence() {
+    public ArrayList<Transition> getSequence() {
         return sequence;
     }
 
-    public void setSequence(ArrayList<Event> sequence) {
+    public void setSequence(ArrayList<Transition> sequence) {
         this.sequence = sequence;
     }
 
-    public void addEvent(Event event){
-        sequence.add(event);
+    public void addEvent(Transition transition){
+        sequence.add(transition);
     }
 }

@@ -4,8 +4,8 @@ package edu.ut.verify.statechart2java;
  * Created by Jerry Wang on 2018/11/5.
  */
 
-import edu.ut.verify.core.Event;
-import edu.ut.verify.core.State;
+import edu.ut.verify.core.event.Event;
+import edu.ut.verify.core.state.State;
 import edu.ut.verify.core.StateChart;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
