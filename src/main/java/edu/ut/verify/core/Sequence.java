@@ -22,7 +22,15 @@ public class Sequence {
         this.sequence = sequence;
     }
 
-    public void addEvent(Transition transition){
+    public void addSequence(Transition transition){
         sequence.add(transition);
+    }
+
+    public Sequence clone(Sequence sequence){
+        Sequence newSequence = new Sequence();
+        for(Transition t : sequence.getSequence())
+            newSequence.addSequence(t);
+
+        return newSequence;
     }
 }

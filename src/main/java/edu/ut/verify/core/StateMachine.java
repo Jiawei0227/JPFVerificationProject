@@ -20,20 +20,20 @@ public class StateMachine {
 
     private State currentState;
 
+    /**
+     * Use Verify jpf to search all the path
+     * @param e
+     */
+    private void goNextState(Transition e){
+        sequence.addSequence(e);
+    }
+
     public State getCurrentState() {
         return currentState;
     }
 
     public void setCurrentState(State currentState) {
         this.currentState = currentState;
-    }
-
-    /**
-     * Use Verify jpf to search all the path
-     * @param e
-     */
-    private void goNextState(Transition e){
-        sequence.addEvent(e);
     }
 
     public StateChart getStateChart() {
