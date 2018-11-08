@@ -9,6 +9,8 @@ public abstract class Event {
 
     private String name;
 
+    private String Id;
+
     private Predicate predicate;
 
     public String getName() {
@@ -18,6 +20,12 @@ public abstract class Event {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String Id) { this.Id = Id; }
 
     public Predicate getPredicate() {
         return predicate;
