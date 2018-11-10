@@ -22,14 +22,18 @@ public class Sequence {
         this.sequence = sequence;
     }
 
-    public void addSequence(Transition transition){
+    public void addTransition(Transition transition){
         sequence.add(transition);
     }
 
-    public Sequence clone(Sequence sequence){
+    public void removeTransition(Transition transition) {
+        sequence.remove(transition);
+    }
+
+    public static Sequence clone(Sequence sequence){
         Sequence newSequence = new Sequence();
         for(Transition t : sequence.getSequence())
-            newSequence.addSequence(t);
+            newSequence.addTransition(t);
 
         return newSequence;
     }
