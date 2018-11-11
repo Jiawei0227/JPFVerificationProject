@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.0" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1">
+	<xmi:Documentation exporter="StarUML" exporterVersion="2.0"/>
+	<uml:Model xmi:id="AAAAAAFm3wy/1MPQQ9A=" xmi:type="uml:Model" name="RootModel">
+		<packagedElement xmi:id="AAAAAAFF+qBWK6M3Z8Y=" name="Model" visibility="public" xmi:type="uml:Model"/>
+		<packagedElement xmi:id="AAAAAAFm3NhG5L42P2Y=" name="Dialing" visibility="public" isReentrant="true" xmi:type="uml:StateMachine">
+			<region xmi:id="AAAAAAFm3NhG5L43O0A=" visibility="public" xmi:type="uml:Region">
+				<subvertex xmi:id="AAAAAAFm3N2YzL+Azg4=" name="Timeout" visibility="public" xmi:type="uml:State">
+					<doActivity xmi:id="AAAAAAFm3N2ucL+lL7g=" name="playMessage" visibility="public" isReentrant="true" xmi:type="uml:Activity" isReadOnly="false" isSingleExecution="false"/>
+				</subvertex>
+				<subvertex xmi:id="AAAAAAFm3vzp/7/Mnxc=" name="DialTone" visibility="public" xmi:type="uml:State">
+					<doActivity xmi:id="AAAAAAFm3v0a7r/ykEc=" name="PlayDialTone" visibility="public" isReentrant="true" xmi:type="uml:Activity" isReadOnly="false" isSingleExecution="false"/>
+				</subvertex>
+				<subvertex xmi:id="AAAAAAFm3v1wab/5ux8=" visibility="public" xmi:type="uml:Pseudostate" kind="initial"/>
+				<subvertex xmi:id="AAAAAAFm3v9dicBJm8I=" name="Dialing" visibility="public" xmi:type="uml:State">
+					<region xmi:id="AAAAAAFm3v9dicBKMq4=" visibility="public" xmi:type="uml:Region">
+						<subvertex xmi:id="AAAAAAFm3wUJbsGow1U=" name="Wait" visibility="public" xmi:type="uml:State"/>
+						<subvertex xmi:id="AAAAAAFm3wNcUsEEboE=" name="Send" visibility="public" xmi:type="uml:State"/>
+						<subvertex xmi:id="AAAAAAFm3wU26MHOIe4=" name="Receive" visibility="public" xmi:type="uml:State"/>
+					</region>
+				</subvertex>
+				<subvertex xmi:id="AAAAAAFm3wXr7cIvNrA=" name="Invalid" visibility="public" xmi:type="uml:State">
+					<doActivity xmi:id="AAAAAAFm3wYUc8JVcQY=" name="playMessage" visibility="public" isReentrant="true" xmi:type="uml:Activity" isReadOnly="false" isSingleExecution="false"/>
+				</subvertex>
+				<subvertex xmi:id="AAAAAAFm3wcozsKG0eA=" name="Connecting" visibility="public" xmi:type="uml:State"/>
+				<subvertex xmi:id="AAAAAAFm3wdTDMKscPM=" name="Busy" visibility="public" xmi:type="uml:State"/>
+				<subvertex xmi:id="AAAAAAFm3wfXSsL6jHg=" name="Ringing" visibility="public" xmi:type="uml:State"/>
+				<subvertex xmi:id="AAAAAAFm3wg43cM09ug=" name="Pinned" visibility="public" xmi:type="uml:State"/>
+				<subvertex xmi:id="AAAAAAFm3whYJMNa+Bo=" name="Talking" visibility="public" xmi:type="uml:State"/>
+				<transition xmi:id="AAAAAAFm3v2vdcALhbg=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFm3v1wab/5ux8=" target="AAAAAAFm3vzp/7/Mnxc=" kind="external">
+					<ownedMember xmi:id="AAAAAAFm3v3B/8Adog4=" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+					<trigger xmi:id="AAAAAAFm3wy/1MPRa0M=" xmi:type="uml:Trigger" name="" event="AAAAAAFm3v3B/8Adog4="/>
+					<trigger xmi:id="AAAAAAFm3v3B/8Adog4=" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+				</transition>
+				<transition xmi:id="AAAAAAFm3v5la8AgtT8=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFm3vzp/7/Mnxc=" target="AAAAAAFm3N2YzL+Azg4=" kind="external">
+					<ownedMember xmi:id="AAAAAAFm3v56g8AymGs=" name="after%2015sec" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+					<trigger xmi:id="AAAAAAFm3wy/1MPS/xQ=" xmi:type="uml:Trigger" name="after%2015sec" event="AAAAAAFm3v56g8AymGs="/>
+					<trigger xmi:id="AAAAAAFm3v56g8AymGs=" name="after%2015sec" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+				</transition>
+				<transition xmi:id="AAAAAAFm3wTSgMGULzk=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFm3vzp/7/Mnxc=" target="AAAAAAFm3wNcUsEEboE=" kind="external">
+					<ownedMember xmi:id="AAAAAAFm3wTvMsGmNGQ=" name="dialDigit" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+					<trigger xmi:id="AAAAAAFm3wy/1MPTDkg=" xmi:type="uml:Trigger" name="dialDigit" event="AAAAAAFm3wTvMsGmNGQ="/>
+					<trigger xmi:id="AAAAAAFm3wTvMsGmNGQ=" name="dialDigit" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+				</transition>
+				<transition xmi:id="AAAAAAFm3wV5pcH2F8o=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFm3wNcUsEEboE=" target="AAAAAAFm3wU26MHOIe4=" kind="external"/>
+				<transition xmi:id="AAAAAAFm3wWHsMIH0K4=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFm3wUJbsGow1U=" target="AAAAAAFm3wNcUsEEboE=" kind="external">
+					<ownedMember xmi:id="AAAAAAFm3wWfO8IZd9I=" name="dialDigit" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+					<trigger xmi:id="AAAAAAFm3wy/1MPU3o8=" xmi:type="uml:Trigger" name="dialDigit" event="AAAAAAFm3wWfO8IZd9I="/>
+					<trigger xmi:id="AAAAAAFm3wWfO8IZd9I=" name="dialDigit" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+				</transition>
+				<transition xmi:id="AAAAAAFm3wW0usIbS/0=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFm3wU26MHOIe4=" target="AAAAAAFm3wUJbsGow1U=" kind="external">
+					<ownedMember xmi:id="AAAAAAFm3wXT6sItEcQ=" name="incompleteNumber" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+					<trigger xmi:id="AAAAAAFm3wy/1MPVzAI=" xmi:type="uml:Trigger" name="incompleteNumber" event="AAAAAAFm3wXT6sItEcQ="/>
+					<trigger xmi:id="AAAAAAFm3wXT6sItEcQ=" name="incompleteNumber" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+				</transition>
+				<transition xmi:id="AAAAAAFm3wZigsJcMCg=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFm3wU26MHOIe4=" target="AAAAAAFm3wXr7cIvNrA=" kind="external">
+					<ownedMember xmi:id="AAAAAAFm3wZ9QsJuV5U=" name="invalidNumber" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+					<trigger xmi:id="AAAAAAFm3wy/1MPWEtM=" xmi:type="uml:Trigger" name="invalidNumber" event="AAAAAAFm3wZ9QsJuV5U="/>
+					<trigger xmi:id="AAAAAAFm3wZ9QsJuV5U=" name="invalidNumber" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+				</transition>
+				<transition xmi:id="AAAAAAFm3wbc1MJy3JE=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFm3v9dicBJm8I=" target="AAAAAAFm3N2YzL+Azg4=" kind="external">
+					<ownedMember xmi:id="AAAAAAFm3wb9ycKEgfc=" name="after%2015sec" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+					<trigger xmi:id="AAAAAAFm3wy/1MPXg/M=" xmi:type="uml:Trigger" name="after%2015sec" event="AAAAAAFm3wb9ycKEgfc="/>
+					<trigger xmi:id="AAAAAAFm3wb9ycKEgfc=" name="after%2015sec" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+				</transition>
+				<transition xmi:id="AAAAAAFm3wdpkcLSXZ0=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFm3wcozsKG0eA=" target="AAAAAAFm3wdTDMKscPM=" kind="external">
+					<ownedMember xmi:id="AAAAAAFm3wdxKcLk4zo=" name="busy" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+					<trigger xmi:id="AAAAAAFm3wy/1MPYcx0=" xmi:type="uml:Trigger" name="busy" event="AAAAAAFm3wdxKcLk4zo="/>
+					<trigger xmi:id="AAAAAAFm3wdxKcLk4zo=" name="busy" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+				</transition>
+				<transition xmi:id="AAAAAAFm3wd9wcLmej8=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFm3wU26MHOIe4=" target="AAAAAAFm3wcozsKG0eA=" kind="external">
+					<ownedMember xmi:id="AAAAAAFm3wemlsL4lxE=" name="validNumber" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+					<trigger xmi:id="AAAAAAFm3wy/1MPZspc=" xmi:type="uml:Trigger" name="validNumber" event="AAAAAAFm3wemlsL4lxE="/>
+					<trigger xmi:id="AAAAAAFm3wemlsL4lxE=" name="validNumber" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+				</transition>
+				<transition xmi:id="AAAAAAFm3wgMZcMgASE=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFm3wcozsKG0eA=" target="AAAAAAFm3wfXSsL6jHg=" kind="external">
+					<ownedMember xmi:id="AAAAAAFm3wgaHsMy7vg=" name="connected" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+					<trigger xmi:id="AAAAAAFm3wy/1MPadxM=" xmi:type="uml:Trigger" name="connected" event="AAAAAAFm3wgaHsMy7vg="/>
+					<trigger xmi:id="AAAAAAFm3wgaHsMy7vg=" name="connected" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+				</transition>
+				<transition xmi:id="AAAAAAFm3wi0gsOALKA=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFm3wfXSsL6jHg=" target="AAAAAAFm3whYJMNa+Bo=" kind="external">
+					<ownedMember xmi:id="AAAAAAFm3wjaS8OSNB0=" name="CalleeAnswered" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+					<trigger xmi:id="AAAAAAFm3wy/1cPbhU4=" xmi:type="uml:Trigger" name="CalleeAnswered" event="AAAAAAFm3wjaS8OSNB0="/>
+					<trigger xmi:id="AAAAAAFm3wjaS8OSNB0=" name="CalleeAnswered" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+				</transition>
+				<transition xmi:id="AAAAAAFm3wkAD8OU/8Y=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFm3wg43cM09ug=" target="AAAAAAFm3whYJMNa+Bo=" kind="external">
+					<ownedMember xmi:id="AAAAAAFm3wkxqsOmSWE=" name="CalleeAnswers" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+					<trigger xmi:id="AAAAAAFm3wy/1cPceTk=" xmi:type="uml:Trigger" name="CalleeAnswers" event="AAAAAAFm3wkxqsOmSWE="/>
+					<trigger xmi:id="AAAAAAFm3wkxqsOmSWE=" name="CalleeAnswers" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+				</transition>
+				<transition xmi:id="AAAAAAFm3wlkJMOoWUM=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFm3whYJMNa+Bo=" target="AAAAAAFm3wg43cM09ug=" kind="external">
+					<ownedMember xmi:id="AAAAAAFm3wmMLMO6K8I=" name="CalleeHangsup" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+					<trigger xmi:id="AAAAAAFm3wy/1cPd8sg=" xmi:type="uml:Trigger" name="CalleeHangsup" event="AAAAAAFm3wmMLMO6K8I="/>
+					<trigger xmi:id="AAAAAAFm3wmMLMO6K8I=" name="CalleeHangsup" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+				</transition>
+			</region>
+		</packagedElement>
+	</uml:Model>
+</xmi:XMI>

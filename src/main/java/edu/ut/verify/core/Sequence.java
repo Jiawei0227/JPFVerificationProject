@@ -37,4 +37,12 @@ public class Sequence {
 
         return newSequence;
     }
+
+    public void printSequence(){
+        for(Transition transition : sequence){
+            System.out.print(transition.getEvent().getName() + " -> ");
+        }
+        System.out.println();
+    }
+
 }

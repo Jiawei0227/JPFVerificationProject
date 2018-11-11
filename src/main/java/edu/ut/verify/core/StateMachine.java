@@ -50,7 +50,7 @@ public class StateMachine {
      * @param sequence
      * @param countMap
      */
-    public void dfs(Sequence sequence, HashMap<State, Integer> countMap){
+    private void dfs(Sequence sequence, HashMap<State, Integer> countMap){
         if(currentState.equals(stateChart.getEndState())){
             sequences.add(Sequence.clone(sequence));
             return;
@@ -71,6 +71,12 @@ public class StateMachine {
             dfs(sequence, countMap);
             this.currentState = transition.fromState;
             sequence.removeTransition(transition);
+        }
+    }
+
+    public void printSequence(){
+        for(Sequence s: sequences){
+            s.printSequence();
         }
     }
 
