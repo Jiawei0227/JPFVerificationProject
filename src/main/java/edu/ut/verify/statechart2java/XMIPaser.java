@@ -36,44 +36,55 @@ public class XMIPaser {
     private static Event parseEvent(Element element){
 
         Event event = new DoEvent();
-        Element ownedMember = (Element) element.getElementsByTagName("ownedMember").item(0);
-        if (ownedMember.getAttribute("name").length() != 0) {
-            event.setName(ownedMember.getAttribute("name"));
+        NodeList eventOwnedMember = element.getElementsByTagName("ownedMember");
+        if (eventOwnedMember.getLength() != 0) {
+            Element ownedMember = (Element) eventOwnedMember.item(0);
+            if (ownedMember.getAttribute("name").length() != 0) {
+                System.out.println("name: " + ownedMember.getAttribute("name"));
+                event.setName(ownedMember.getAttribute("name"));
+            }
         }
-        event.setId(element.getAttribute("xmi:id"));
-        return event;
+        String id = element.getAttribute("xmi:id");
+        if (id.length() == 0) {
+            return null;
+        } else {
+            System.out.println("id: " + id);
+            event.setId(id);
+            return event;
+        }
     }
 
     private static void parseTransition(Element eElement, StateChart stateChart){
         //all events under current region
         NodeList vertexList = eElement.getElementsByTagName("transition");
+        System.out.println("transition length " + vertexList.getLength());
         for (int i = 0; i < vertexList.getLength(); i++) {
 
             Element elem = (Element) vertexList.item(i);
-
             Event event = parseEvent(elem);
+            if (event != null) {
+                Map<State, List<Transition>> stateTransitionMap = stateChart.getStateTransitionMap();
 
-            Map<State, List<Transition>> stateTransitionMap = stateChart.getStateTransitionMap();
-
-            // find fromState and toState
-            Set <State> states = stateTransitionMap.keySet();
-            State fromState = null;
-            State toState = null;
-            String from = elem.getAttribute("source");
-            String to = elem.getAttribute("target");
-            for (State s : states){
-                if (from.equals(s.getId())){
-                    fromState = s;
-                } else if (to.equals(s.getId())) {
-                    toState = s;
+                // find fromState and toState
+                Set<State> states = stateTransitionMap.keySet();
+                State fromState = null;
+                State toState = null;
+                String from = elem.getAttribute("source");
+                String to = elem.getAttribute("target");
+                for (State s : states) {
+                    if (from.equals(s.getId())) {
+                        fromState = s;
+                    } else if (to.equals(s.getId())) {
+                        toState = s;
+                    }
                 }
+
+                List<Transition> transitionList = stateTransitionMap.get(fromState);
+
+                Transition transition = new Transition(fromState, toState, event);
+
+                transitionList.add(transition);
             }
-
-            List<Transition> transitionList = stateTransitionMap.get(fromState);
-
-            Transition transition = new Transition(fromState, toState, event);
-
-            transitionList.add(transition);
 
         }
     }
@@ -94,11 +105,13 @@ public class XMIPaser {
             // If the state has no name
             if (elem.getAttribute("name").length() != 0) {
                 state.setName(elem.getAttribute("name"));
+                System.out.println(String.format("state name: %s", elem.getAttribute("name")));
             }
             state.setId(elem.getAttribute("xmi:id"));
             List<Transition> transitionList = new ArrayList<Transition>();
             stateTransitionMap.put(state, transitionList);
         }
+
         parseTransition(eElement, stateChart);
     }
 
