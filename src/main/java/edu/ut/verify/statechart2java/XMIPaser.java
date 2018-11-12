@@ -86,14 +86,18 @@ public class XMIPaser {
 
     public static void printStateChart(StateChart stateChart){
         Map<State, List<Transition>> map = stateChart.getStateTransitionMap();
-
+        int i = 0;
+        int j = 0;
         for (State state : map.keySet()) {
-            System.out.println("state name: " + state.getName() + "\tid: " + state.getId());
+            System.out.println(i+" state name: " + state.getName() + "\tid: " + state.getId());
             for (Transition transition: map.get(state)) {
                 Event event = transition.getEvent();
-                System.out.println("\ttransition name: " + event.getName() + "\tid: " + event.getId());
+                System.out.println("\t"+j+" transition name: " + event.getName() + "\tid: " + event.getId());
                 System.out.println("\t\tstate fromState: " + transition.getFromState().getId() + "\ttoState: " + transition.getToState().getId());
+                j = j + 1;
             }
+            j = 0;
+            i = i + 1;
         }
 
     }
