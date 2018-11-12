@@ -11,7 +11,7 @@ import java.io.File;
  */
 public class ProcessController {
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws Exception{
         String fileName = ProcessController.class.getClassLoader().getResource("test.xmi").getFile();
         File file = new File(fileName);
         StateChart st = XMIPaser.parser(file);

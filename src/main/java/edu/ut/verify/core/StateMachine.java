@@ -1,5 +1,6 @@
 package edu.ut.verify.core;
 
+import edu.ut.verify.core.exception.NoInitialStateException;
 import edu.ut.verify.core.state.State;
 
 import java.util.ArrayList;
@@ -32,16 +33,18 @@ public class StateMachine {
         return stateChart;
     }
 
-    public void setStateChart(StateChart stateChart) {
-        this.stateChart = stateChart;
-    }
-
     /**
      * start process of the state chart sequence
      */
-    public void process(){
+    public void process() throws NoInitialStateException{
 
         Sequence sequence = new Sequence();
+        
+        if(currentState == null)
+            throw new NoInitialStateException("No Start State Found!");
+        if(stateChart.getEndState() == null)
+            throw new NoInitialStateException("No End State Found!");
+
         HashMap<State, Integer> countMap = new HashMap<State, Integer>();
         dfs(sequence, countMap);
     }
