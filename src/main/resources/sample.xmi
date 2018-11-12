@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.0" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1">
 	<xmi:Documentation exporter="StarUML" exporterVersion="2.0"/>
-	<uml:Model xmi:id="AAAAAAFm38a0IkIQISw=" xmi:type="uml:Model" name="RootModel">
+	<uml:Model xmi:id="AAAAAAFnCO9aLD05eog=" xmi:type="uml:Model" name="RootModel">
 		<packagedElement xmi:id="AAAAAAFF+qBWK6M3Z8Y=" name="Model" visibility="public" xmi:type="uml:Model"/>
 		<packagedElement xmi:id="AAAAAAFm38RAYe0BV9g=" name="StateMachine1" visibility="public" isReentrant="true" xmi:type="uml:StateMachine">
 			<region xmi:id="AAAAAAFm38RAYe0CDg4=" visibility="public" xmi:type="uml:Region">
 				<subvertex xmi:id="AAAAAAFm38RIYe0Iyyo=" name="Send" visibility="public" xmi:type="uml:State"/>
 				<subvertex xmi:id="AAAAAAFm38Reme0uH5c=" name="Receive" visibility="public" xmi:type="uml:State"/>
 				<subvertex xmi:id="AAAAAAFm38SIH+1UPDY=" name="Wait" visibility="public" xmi:type="uml:State"/>
+				<subvertex xmi:id="AAAAAAFnCO5f3jz8VFU=" visibility="public" xmi:type="uml:Pseudostate" kind="initial"/>
+				<subvertex xmi:id="AAAAAAFnCO6G0j0OAwI=" visibility="public" xmi:type="uml:FinalState"/>
 				<transition xmi:id="AAAAAAFm38TPU+16HKA=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFm38SIH+1UPDY=" target="AAAAAAFm38RIYe0Iyyo=" kind="external">
 					<ownedMember xmi:id="AAAAAAFm38Tik+2MgVI=" name="dialDigit" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
-					<trigger xmi:id="AAAAAAFm38a0JEIRtF0=" xmi:type="uml:Trigger" name="dialDigit" event="AAAAAAFm38Tik+2MgVI="/>
+					<trigger xmi:id="AAAAAAFnCO9aLT06mNc=" xmi:type="uml:Trigger" name="dialDigit" event="AAAAAAFm38Tik+2MgVI="/>
 					<trigger xmi:id="AAAAAAFm38Tik+2MgVI=" name="dialDigit" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
 				</transition>
 				<transition xmi:id="AAAAAAFm38T/Vu2OGzM=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFm38Reme0uH5c=" target="AAAAAAFm38SIH+1UPDY=" kind="external">
 					<ownedMember xmi:id="AAAAAAFm38Udge2grEE=" name="incompleteNumber" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
-					<trigger xmi:id="AAAAAAFm38a0JEISfwE=" xmi:type="uml:Trigger" name="incompleteNumber" event="AAAAAAFm38Udge2grEE="/>
+					<trigger xmi:id="AAAAAAFnCO9aLT07+H0=" xmi:type="uml:Trigger" name="incompleteNumber" event="AAAAAAFm38Udge2grEE="/>
 					<trigger xmi:id="AAAAAAFm38Udge2grEE=" name="incompleteNumber" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
 				</transition>
 				<transition xmi:id="AAAAAAFm38U1Ce2ihNY=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFm38RIYe0Iyyo=" target="AAAAAAFm38Reme0uH5c=" kind="external"/>
+				<transition xmi:id="AAAAAAFnCO6sJz0ULG0=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFnCO5f3jz8VFU=" target="AAAAAAFm38RIYe0Iyyo=" kind="external"/>
+				<transition xmi:id="AAAAAAFnCO7dzD0liRc=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFm38Reme0uH5c=" target="AAAAAAFnCO6G0j0OAwI=" kind="external">
+					<ownedMember xmi:id="AAAAAAFnCO7slD03PYg=" name="done" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+					<trigger xmi:id="AAAAAAFnCO9aLT086pY=" xmi:type="uml:Trigger" name="done" event="AAAAAAFnCO7slD03PYg="/>
+					<trigger xmi:id="AAAAAAFnCO7slD03PYg=" name="done" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
+				</transition>
 			</region>
 		</packagedElement>
 	</uml:Model>
