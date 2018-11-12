@@ -12,7 +12,7 @@ import java.io.File;
 public class ProcessController {
 
     public static void main(String[] args){
-        String fileName = ProcessController.class.getClassLoader().getResource("sample.xmi").getFile();
+        String fileName = ProcessController.class.getClassLoader().getResource("test.xmi").getFile();
         File file = new File(fileName);
         StateChart st = XMIPaser.parser(file);
 

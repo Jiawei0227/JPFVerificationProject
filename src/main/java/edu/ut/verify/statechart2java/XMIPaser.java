@@ -19,11 +19,7 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 
 public class XMIPaser {
@@ -42,7 +38,6 @@ public class XMIPaser {
         if (eventOwnedMember.getLength() != 0) {
             Element ownedMember = (Element) eventOwnedMember.item(0);
             if (ownedMember.getAttribute("name").length() != 0) {
-                System.out.println("name: " + ownedMember.getAttribute("name"));
                 event.setName(ownedMember.getAttribute("name"));
             }
         }
@@ -50,7 +45,6 @@ public class XMIPaser {
         if (id.length() == 0) {
             return null;
         } else {
-            System.out.println("id: " + id);
             event.setId(id);
             return event;
         }
@@ -59,7 +53,6 @@ public class XMIPaser {
     private static void parseTransition(Element eElement, StateChart stateChart){
         //all events under current region
         NodeList vertexList = eElement.getElementsByTagName("transition");
-        System.out.println("transition length" + vertexList.getLength());
         for (int i = 0; i < vertexList.getLength(); i++) {
 
             Element elem = (Element) vertexList.item(i);
@@ -89,6 +82,20 @@ public class XMIPaser {
             }
 
         }
+    }
+
+    public static void printStateChart(StateChart stateChart){
+        Map<State, List<Transition>> map = stateChart.getStateTransitionMap();
+
+        for (State state : map.keySet()) {
+            System.out.println("state name: " + state.getName() + "\tid: " + state.getId());
+            for (Transition transition: map.get(state)) {
+                Event event = transition.getEvent();
+                System.out.println("\ttransition name: " + event.getName() + "\tid: " + event.getId());
+                System.out.println("\t\tstate fromState: " + transition.getFromState().getId() + "\ttoState: " + transition.getToState().getId());
+            }
+        }
+
     }
 
     private static void parseState(NodeList regions, StateChart stateChart){
@@ -128,7 +135,6 @@ public class XMIPaser {
             if (elem.getAttribute("name").length() != 0) {
 
                 state.setName(elem.getAttribute("name"));
-                System.out.println(String.format("state name: %s", elem.getAttribute("name")));
 
             }
             state.setId(elem.getAttribute("xmi:id"));
@@ -137,6 +143,7 @@ public class XMIPaser {
         }
 
         parseTransition(eElement, stateChart);
+        printStateChart(stateChart);
     }
 
 
