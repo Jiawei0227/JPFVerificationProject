@@ -19,6 +19,7 @@ public class StateMachine {
 
     public StateMachine(StateChart stateChart){
         this.stateChart = stateChart;
+
         this.sequences = new ArrayList<Sequence>();
 
         currentState = stateChart.getStartState();
@@ -61,14 +62,17 @@ public class StateMachine {
         for( Transition transition : transitionList ){
             sequence.addTransition(transition);
             State nextState = transition.toState;
+
             if(countMap.get(nextState) == circleCount)
                 continue;
-            else{
-                countMap.put(nextState, countMap.getOrDefault(nextState, 0 ) + 1);
-            }
+
+            countMap.put(nextState, countMap.getOrDefault(nextState, 0 ) + 1);
             //dfs
             this.currentState = nextState;
             dfs(sequence, countMap);
+
+            countMap.put(nextState, countMap.get(nextState) - 1);
+
             this.currentState = transition.fromState;
             sequence.removeTransition(transition);
         }
