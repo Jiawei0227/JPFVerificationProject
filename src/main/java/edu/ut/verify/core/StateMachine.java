@@ -63,7 +63,7 @@ public class StateMachine {
             sequence.addTransition(transition);
             State nextState = transition.toState;
 
-            if(countMap.get(nextState) == circleCount)
+            if(countMap.getOrDefault(nextState,0) == circleCount)
                 continue;
 
             countMap.put(nextState, countMap.getOrDefault(nextState, 0 ) + 1);

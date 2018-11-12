@@ -5,7 +5,9 @@ package edu.ut.verify.statechart2java;
  */
 
 import edu.ut.verify.core.Transition;
+import edu.ut.verify.core.state.EndState;
 import edu.ut.verify.core.state.NState;
+import edu.ut.verify.core.state.StartState;
 import edu.ut.verify.core.state.State;
 import edu.ut.verify.core.StateChart;
 import edu.ut.verify.core.event.*;
@@ -57,7 +59,7 @@ public class XMIPaser {
     private static void parseTransition(Element eElement, StateChart stateChart){
         //all events under current region
         NodeList vertexList = eElement.getElementsByTagName("transition");
-        System.out.println("transition length " + vertexList.getLength());
+        System.out.println("transition length" + vertexList.getLength());
         for (int i = 0; i < vertexList.getLength(); i++) {
 
             Element elem = (Element) vertexList.item(i);
@@ -100,12 +102,34 @@ public class XMIPaser {
         Element elem;
         NodeList vertexList = eElement.getElementsByTagName("subvertex");
         for (int i = 0; i < vertexList.getLength(); i++) {
+
+            State state = null;
+
             elem = (Element) vertexList.item(i);
-            State state = new NState();
+
+            String stateType = elem.getAttribute("xmi:type");
+            if ("uml:Pseudostate".equals(stateType)) {
+
+                state = new StartState();
+                stateChart.setStartState((StartState) state);
+
+            } else if ("uml:FinalState".equals(stateType)) {
+
+                state = new EndState();
+                stateChart.setEndState((EndState) state);
+
+            } else if ("uml:State".equals(stateType)) {
+
+                state = new NState();
+
+            }
+
             // If the state has no name
             if (elem.getAttribute("name").length() != 0) {
+
                 state.setName(elem.getAttribute("name"));
                 System.out.println(String.format("state name: %s", elem.getAttribute("name")));
+
             }
             state.setId(elem.getAttribute("xmi:id"));
             List<Transition> transitionList = new ArrayList<Transition>();

@@ -1,6 +1,8 @@
 package edu.ut.verify.core;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by Jerry Wang on 2018/11/5.
@@ -39,10 +41,8 @@ public class Sequence {
     }
 
     public void printSequence(){
-        for(Transition transition : sequence){
-            System.out.print(transition.getEvent().getName() + " -> ");
-        }
-        System.out.println();
+        List<String> names = sequence.stream().map(e -> e.getEvent().getId()+":"+e.getEvent().getName()).collect(Collectors.toList());
+        System.out.println(String.join(" -> ", names));
     }
 
 }

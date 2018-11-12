@@ -26,9 +26,7 @@ public class StateChart {
         this.startState = startState;
     }
 
-    public EndState getEndState() {
-        return endState;
-    }
+    public EndState getEndState() { return endState; }
 
     public void setEndState(EndState endState) {
         this.endState = endState;
