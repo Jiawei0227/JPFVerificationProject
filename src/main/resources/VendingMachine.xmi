@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.0" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1">
 	<xmi:Documentation exporter="StarUML" exporterVersion="2.0"/>
-	<uml:Model xmi:id="AAAAAAFnCrmE7H8JzhQ=" xmi:type="uml:Model" name="RootModel">
+	<uml:Model xmi:id="AAAAAAFnDhM5if+9lc4=" xmi:type="uml:Model" name="RootModel">
 		<packagedElement xmi:id="AAAAAAFF+qBWK6M3Z8Y=" name="Model" visibility="public" xmi:type="uml:Model"/>
 		<packagedElement xmi:id="AAAAAAFnCZR4Tvf0mqU=" name="StateMachine1" visibility="public" isReentrant="true" xmi:type="uml:StateMachine">
 			<region xmi:id="AAAAAAFnCZR4Tvf1cPQ=" visibility="public" xmi:type="uml:Region">
@@ -14,19 +14,20 @@
 				<subvertex xmi:id="AAAAAAFnCZpza/lGKow=" name="SoftDrink_Dispenser" visibility="public" xmi:type="uml:State"/>
 				<subvertex xmi:id="AAAAAAFnCZquMvlsJNE=" name="Change_Dispenser" visibility="public" xmi:type="uml:State"/>
 				<subvertex xmi:id="AAAAAAFnCZsKXPmUTXY=" name="Exit" visibility="public" xmi:type="uml:State"/>
+				<subvertex xmi:id="AAAAAAFnDhKE8f+mmYU=" visibility="public" xmi:type="uml:FinalState"/>
 				<transition xmi:id="AAAAAAFnCZUH3fg0X+I=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFnCZSFq/f748A=" target="AAAAAAFnCZSpGvgM7ls=" kind="external">
 					<ownedMember xmi:id="AAAAAAFnCZUaqPhG5hs=" name="PowerSwitchOn" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
-					<trigger xmi:id="AAAAAAFnCrmE738Km9M=" xmi:type="uml:Trigger" name="PowerSwitchOn" event="AAAAAAFnCZUaqPhG5hs="/>
+					<trigger xmi:id="AAAAAAFnDhM5i/++X2M=" xmi:type="uml:Trigger" name="PowerSwitchOn" event="AAAAAAFnCZUaqPhG5hs="/>
 					<trigger xmi:id="AAAAAAFnCZUaqPhG5hs=" name="PowerSwitchOn" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
 				</transition>
 				<transition xmi:id="AAAAAAFnCZWdj/hvyFs=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFnCZSpGvgM7ls=" target="AAAAAAFnCZVLxPhI2F4=" kind="external">
 					<ownedMember xmi:id="AAAAAAFnCZW4aPiB5sw=" name="Selection_Display" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
-					<trigger xmi:id="AAAAAAFnCrmE738LlMM=" xmi:type="uml:Trigger" name="Selection_Display" event="AAAAAAFnCZW4aPiB5sw="/>
+					<trigger xmi:id="AAAAAAFnDhM5i/+/3bo=" xmi:type="uml:Trigger" name="Selection_Display" event="AAAAAAFnCZW4aPiB5sw="/>
 					<trigger xmi:id="AAAAAAFnCZW4aPiB5sw=" name="Selection_Display" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
 				</transition>
 				<transition xmi:id="AAAAAAFnCZYm7viqq68=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFnCZVLxPhI2F4=" target="AAAAAAFnCZXcfviDcvY=" kind="external">
 					<ownedMember xmi:id="AAAAAAFnCZZKh/i81xE=" name="show_available_softDrink" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
-					<trigger xmi:id="AAAAAAFnCrmE738MamQ=" xmi:type="uml:Trigger" name="show_available_softDrink" event="AAAAAAFnCZZKh/i81xE="/>
+					<trigger xmi:id="AAAAAAFnDhM5i//AIVE=" xmi:type="uml:Trigger" name="show_available_softDrink" event="AAAAAAFnCZZKh/i81xE="/>
 					<trigger xmi:id="AAAAAAFnCZZKh/i81xE=" name="show_available_softDrink" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
 				</transition>
 				<transition xmi:id="AAAAAAFnCZa0YPjCr9c=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFnCZXcfviDcvY=" target="AAAAAAFnCZVLxPhI2F4=" kind="external">
@@ -35,7 +36,7 @@
 							<documentation value="No%20of%20SoftDrink%20%3C=%2010"/>
 						</xmi:Extension>
 					</ownedMember>
-					<trigger xmi:id="AAAAAAFnCrmE738Nm30=" xmi:type="uml:Trigger" name="Select_Softdrink" event="AAAAAAFnCZbbHfjUgBk="/>
+					<trigger xmi:id="AAAAAAFnDhM5i//BSZg=" xmi:type="uml:Trigger" name="Select_Softdrink" event="AAAAAAFnCZbbHfjUgBk="/>
 					<trigger xmi:id="AAAAAAFnCZbbHfjUgBk=" name="Select_Softdrink" visibility="public" xmi:type="uml:AnyReceiveEvent">
 						<xmi:Extension extender="StarUML">
 							<documentation value="No%20of%20SoftDrink%20%3C=%2010"/>
@@ -44,46 +45,47 @@
 				</transition>
 				<transition xmi:id="AAAAAAFnCZioDPj/VSo=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFnCZVLxPhI2F4=" target="AAAAAAFnCZhzvfjZlWs=" kind="external">
 					<ownedMember xmi:id="AAAAAAFnCZi2//kR6EQ=" name="Insert_Money" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
-					<trigger xmi:id="AAAAAAFnCrmE738ONjg=" xmi:type="uml:Trigger" name="Insert_Money" event="AAAAAAFnCZi2//kR6EQ="/>
+					<trigger xmi:id="AAAAAAFnDhM5i//CxYg=" xmi:type="uml:Trigger" name="Insert_Money" event="AAAAAAFnCZi2//kR6EQ="/>
 					<trigger xmi:id="AAAAAAFnCZi2//kR6EQ=" name="Insert_Money" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
 				</transition>
 				<transition xmi:id="AAAAAAFnCZt4E/m76Nk=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFnCZjV4/kTJYQ=" target="AAAAAAFnCZpza/lGKow=" kind="external">
 					<ownedMember xmi:id="AAAAAAFnCZt9YfnNGFM=" name="Vending%20Machine%20Busy" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
-					<trigger xmi:id="AAAAAAFnCrmE738PiUs=" xmi:type="uml:Trigger" name="Vending%20Machine%20Busy" event="AAAAAAFnCZt9YfnNGFM="/>
+					<trigger xmi:id="AAAAAAFnDhM5i//Dsvc=" xmi:type="uml:Trigger" name="Vending%20Machine%20Busy" event="AAAAAAFnCZt9YfnNGFM="/>
 					<trigger xmi:id="AAAAAAFnCZt9YfnNGFM=" name="Vending%20Machine%20Busy" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
 				</transition>
 				<transition xmi:id="AAAAAAFnCZu1VfnP11Y=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFnCZpza/lGKow=" target="AAAAAAFnCZquMvlsJNE=" kind="external">
 					<ownedMember xmi:id="AAAAAAFnCZu5lPnh6iI=" name="Dispense%20SoftDrink" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
-					<trigger xmi:id="AAAAAAFnCrmE738Q+VU=" xmi:type="uml:Trigger" name="Dispense%20SoftDrink" event="AAAAAAFnCZu5lPnh6iI="/>
+					<trigger xmi:id="AAAAAAFnDhM5i//Esho=" xmi:type="uml:Trigger" name="Dispense%20SoftDrink" event="AAAAAAFnCZu5lPnh6iI="/>
 					<trigger xmi:id="AAAAAAFnCZu5lPnh6iI=" name="Dispense%20SoftDrink" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
 				</transition>
 				<transition xmi:id="AAAAAAFnCZvyJvnjTcQ=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFnCZquMvlsJNE=" target="AAAAAAFnCZsKXPmUTXY=" kind="external">
 					<ownedMember xmi:id="AAAAAAFnCZv3Dvn1iEY=" name="Change%20Dispense" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
-					<trigger xmi:id="AAAAAAFnCrmE738Rb+0=" xmi:type="uml:Trigger" name="Change%20Dispense" event="AAAAAAFnCZv3Dvn1iEY="/>
+					<trigger xmi:id="AAAAAAFnDhM5i//FQcs=" xmi:type="uml:Trigger" name="Change%20Dispense" event="AAAAAAFnCZv3Dvn1iEY="/>
 					<trigger xmi:id="AAAAAAFnCZv3Dvn1iEY=" name="Change%20Dispense" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
 				</transition>
 				<transition xmi:id="AAAAAAFnCZwRWvn3E5A=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFnCZsKXPmUTXY=" target="AAAAAAFnCZSpGvgM7ls=" kind="external"/>
 				<transition xmi:id="AAAAAAFnCZ26zfoTcSQ=" name="ReturnMoney%20%3C%200" visibility="public" xmi:type="uml:Transition" source="AAAAAAFnCZjV4/kTJYQ=" target="AAAAAAFnCZquMvlsJNE=" kind="external"/>
 				<transition xmi:id="AAAAAAFnCZ7YavolO24=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFnCZjV4/kTJYQ=" target="AAAAAAFnCZjV4/kTJYQ=" kind="external">
 					<ownedMember xmi:id="AAAAAAFnCZ7ptvo3a+Y=" name="VerifyAmount" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
-					<trigger xmi:id="AAAAAAFnCrmE738SUh0=" xmi:type="uml:Trigger" name="VerifyAmount" event="AAAAAAFnCZ7ptvo3a+Y="/>
+					<trigger xmi:id="AAAAAAFnDhM5i//GWxs=" xmi:type="uml:Trigger" name="VerifyAmount" event="AAAAAAFnCZ7ptvo3a+Y="/>
 					<trigger xmi:id="AAAAAAFnCZ7ptvo3a+Y=" name="VerifyAmount" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
 				</transition>
 				<transition xmi:id="AAAAAAFnCZ8OD/o6/xY=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFnCZVLxPhI2F4=" target="AAAAAAFnCZjV4/kTJYQ=" kind="external">
 					<ownedMember xmi:id="AAAAAAFnCZ9FkfpMhYw=" name="AvailableDrinkAfterSell" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
-					<trigger xmi:id="AAAAAAFnCrmE738T2o0=" xmi:type="uml:Trigger" name="AvailableDrinkAfterSell" event="AAAAAAFnCZ9FkfpMhYw="/>
+					<trigger xmi:id="AAAAAAFnDhM5i//Hme4=" xmi:type="uml:Trigger" name="AvailableDrinkAfterSell" event="AAAAAAFnCZ9FkfpMhYw="/>
 					<trigger xmi:id="AAAAAAFnCZ9FkfpMhYw=" name="AvailableDrinkAfterSell" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
 				</transition>
 				<transition xmi:id="AAAAAAFnCZ95/fpO6k0=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFnCZjV4/kTJYQ=" target="AAAAAAFnCZVLxPhI2F4=" kind="external">
 					<ownedMember xmi:id="AAAAAAFnCZ+L7fpgeuo=" name="ShowToSelectPanel" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
-					<trigger xmi:id="AAAAAAFnCrmE738U1fU=" xmi:type="uml:Trigger" name="ShowToSelectPanel" event="AAAAAAFnCZ+L7fpgeuo="/>
+					<trigger xmi:id="AAAAAAFnDhM5i//ISnE=" xmi:type="uml:Trigger" name="ShowToSelectPanel" event="AAAAAAFnCZ+L7fpgeuo="/>
 					<trigger xmi:id="AAAAAAFnCZ+L7fpgeuo=" name="ShowToSelectPanel" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
 				</transition>
 				<transition xmi:id="AAAAAAFnCrb6cX71eqY=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFnCZhzvfjZlWs=" target="AAAAAAFnCZjV4/kTJYQ=" kind="external">
 					<ownedMember xmi:id="AAAAAAFnCrcSGH8HqNo=" name="AmountCount" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
-					<trigger xmi:id="AAAAAAFnCrmE738VWVU=" xmi:type="uml:Trigger" name="AmountCount" event="AAAAAAFnCrcSGH8HqNo="/>
+					<trigger xmi:id="AAAAAAFnDhM5i//JBi0=" xmi:type="uml:Trigger" name="AmountCount" event="AAAAAAFnCrcSGH8HqNo="/>
 					<trigger xmi:id="AAAAAAFnCrcSGH8HqNo=" name="AmountCount" visibility="public" xmi:type="uml:AnyReceiveEvent"/>
 				</transition>
+				<transition xmi:id="AAAAAAFnDhKl4/+sceM=" visibility="public" xmi:type="uml:Transition" source="AAAAAAFnCZsKXPmUTXY=" target="AAAAAAFnDhKE8f+mmYU=" kind="external"/>
 			</region>
 		</packagedElement>
 	</uml:Model>

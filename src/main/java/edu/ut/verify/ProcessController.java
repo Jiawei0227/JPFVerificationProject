@@ -12,9 +12,10 @@ import java.io.File;
 public class ProcessController {
 
     public static void main(String[] args) throws Exception{
-        String fileName = ProcessController.class.getClassLoader().getResource("test.xmi").getFile();
+        String fileName = ProcessController.class.getClassLoader().getResource("VendingMachine.xmi").getFile();
         File file = new File(fileName);
         StateChart st = XMIPaser.parser(file);
+
 
         StateMachine stateMachine = new StateMachine(st);
         stateMachine.process();

@@ -69,7 +69,8 @@ public class XMIPaser {
                 for (State s : states) {
                     if (from.equals(s.getId())) {
                         fromState = s;
-                    } else if (to.equals(s.getId())) {
+                    }
+                    if (to.equals(s.getId())) {
                         toState = s;
                     }
                 }
@@ -85,16 +86,36 @@ public class XMIPaser {
     }
 
     public static void printStateChart(StateChart stateChart){
-        Map<State, List<Transition>> map = stateChart.getStateTransitionMap();
         int i = 0;
         int j = 0;
+
+        Map<State, List<Transition>> map = stateChart.getStateTransitionMap();
+        System.out.println("number of states: " + map.keySet().size());
+
         for (State state : map.keySet()) {
+
             System.out.println(i+" state name: " + state.getName() + "\tid: " + state.getId());
+
+            System.out.println("number of transitions: " + map.get(state).size());
+
+            if (state instanceof EndState) { continue;}
+
+
             for (Transition transition: map.get(state)) {
+
                 Event event = transition.getEvent();
-                System.out.println("\t"+j+" transition name: " + event.getName() + "\tid: " + event.getId());
-                System.out.println("\t\tstate fromState: " + transition.getFromState().getId() + "\ttoState: " + transition.getToState().getId());
+                if (event.getName() !=  null){
+
+                    System.out.print("\t"+j+" transition name: " + event.getName());
+                }
+
+                System.out.println("\tid: " + event.getId());
+
+                System.out.print("\t\tstate fromState: " + transition.getFromState().getId());
+
+                System.out.println("\ttoState: " + transition.getToState().getId());
                 j = j + 1;
+
             }
             j = 0;
             i = i + 1;

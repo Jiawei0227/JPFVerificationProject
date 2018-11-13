@@ -16,7 +16,7 @@ public class StateMachine {
 
     private List<Sequence> sequences;
 
-    private static final int circleCount = 3;
+    private static final int circleCount = 1;
 
     public StateMachine(StateChart stateChart){
         this.stateChart = stateChart;
