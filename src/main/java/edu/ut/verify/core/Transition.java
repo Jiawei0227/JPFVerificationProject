@@ -45,4 +45,8 @@ public class Transition {
     public void setEvent(Event event) {
         this.event = event;
     }
+
+    public String getEventName(){
+        return event.getName();
+    }
 }

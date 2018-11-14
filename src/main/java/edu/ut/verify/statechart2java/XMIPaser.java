@@ -98,7 +98,10 @@ public class XMIPaser {
 
             System.out.println("number of transitions: " + map.get(state).size());
 
-            if (state instanceof EndState) { continue;}
+            if (state instanceof EndState) {
+                i ++;
+                continue;
+            }
 
 
             for (Transition transition: map.get(state)) {
@@ -108,17 +111,17 @@ public class XMIPaser {
 
                     System.out.print("\t"+j+" transition name: " + event.getName());
                 }
+                System.out.println();
+                //System.out.println("\tid: " + event.getId());
 
-                System.out.println("\tid: " + event.getId());
+                System.out.print("\t\tstate fromState: " + transition.getFromState().getName());
 
-                System.out.print("\t\tstate fromState: " + transition.getFromState().getId());
-
-                System.out.println("\ttoState: " + transition.getToState().getId());
+                System.out.println("\ttoState: " + transition.getToState().getName());
                 j = j + 1;
 
             }
             j = 0;
-            i = i + 1;
+            i ++;
         }
 
     }

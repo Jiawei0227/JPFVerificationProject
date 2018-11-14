@@ -16,12 +16,15 @@ public class StateMachine {
 
     private List<Sequence> sequences;
 
+    /**
+     * contains
+     */
     private static final int circleCount = 1;
 
     public StateMachine(StateChart stateChart){
         this.stateChart = stateChart;
 
-        this.sequences = new ArrayList<Sequence>();
+        this.sequences = new ArrayList<>();
 
         currentState = stateChart.getStartState();
     }
@@ -45,7 +48,9 @@ public class StateMachine {
         if(stateChart.getEndState() == null)
             throw new NoInitialStateException("No End State Found!");
 
-        HashMap<State, Integer> countMap = new HashMap<State, Integer>();
+        System.out.println("---------------------------------------Path Print:--------------------------------------------");
+
+        HashMap<Transition, Integer> countMap = new HashMap<>();
         dfs(sequence, countMap);
     }
 
@@ -54,7 +59,7 @@ public class StateMachine {
      * @param sequence
      * @param countMap
      */
-    private void dfs(Sequence sequence, HashMap<State, Integer> countMap){
+    private void dfs(Sequence sequence, HashMap<Transition, Integer> countMap){
         if(currentState.equals(stateChart.getEndState())){
             sequences.add(Sequence.clone(sequence));
             return;
@@ -63,27 +68,34 @@ public class StateMachine {
         List<Transition> transitionList = stateChart.getStateTransitionMap().get(currentState);
 
         for( Transition transition : transitionList ){
+            //System.out.println(currentState.getName() + " -> " + transition.getEvent().getName());
             sequence.addTransition(transition);
             State nextState = transition.toState;
 
-            if(countMap.getOrDefault(nextState,0) == circleCount)
+            if(countMap.getOrDefault(transition,0) == circleCount) {
+                sequence.removeLastTransition();
                 continue;
+            }
 
-            countMap.put(nextState, countMap.getOrDefault(nextState, 0 ) + 1);
+
+            countMap.put(transition, countMap.getOrDefault(nextState, 0 ) + 1);
             //dfs
             this.currentState = nextState;
             dfs(sequence, countMap);
 
-            countMap.put(nextState, countMap.get(nextState) - 1);
+            countMap.put(transition, countMap.get(transition) - 1);
+           // System.out.println(countMap.get(nextState));
 
             this.currentState = transition.fromState;
-            sequence.removeTransition(transition);
+            sequence.removeLastTransition();
         }
     }
 
     public void printSequence(){
-        for(Sequence s: sequences){
-            s.printSequence();
+        sequences.sort((o1,o2) -> (o1.length() - o2.length()));
+        for(int i = 0 ; i < sequences.size() ; i ++){
+            System.out.print(String.format("Path %2d : ",i+1));
+            sequences.get(i).printSequence();
         }
     }
 

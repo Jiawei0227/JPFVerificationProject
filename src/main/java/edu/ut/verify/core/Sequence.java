@@ -11,6 +11,9 @@ public class Sequence {
 
     ArrayList<Transition> sequence;
 
+    public int length(){
+        return sequence.size();
+    }
 
     public Sequence(){
         sequence = new ArrayList<Transition>();
@@ -32,6 +35,10 @@ public class Sequence {
         sequence.remove(transition);
     }
 
+    public void removeLastTransition(){
+        sequence.remove(sequence.size()- 1);
+    }
+
     public static Sequence clone(Sequence sequence){
         Sequence newSequence = new Sequence();
         for(Transition t : sequence.getSequence())
@@ -41,7 +48,7 @@ public class Sequence {
     }
 
     public void printSequence(){
-        List<String> names = sequence.stream().map(e -> e.getEvent().getId()+":"+e.getEvent().getName()).collect(Collectors.toList());
+        List<String> names = sequence.stream().map(Transition::getEventName).collect(Collectors.toList());
         System.out.println(String.join(" -> ", names));
     }
 

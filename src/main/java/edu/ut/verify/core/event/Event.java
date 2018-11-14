@@ -34,4 +34,5 @@ public abstract class Event {
     public void setPredicate(Predicate predicate) {
         this.predicate = predicate;
     }
+
 }
