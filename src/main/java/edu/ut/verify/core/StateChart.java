@@ -18,6 +18,16 @@ public class StateChart {
 
     private Map<State, List<Transition>> stateTransitionMap;
 
+    private Formula formula; //used to store relationship between variable
+
+    public Formula getFormula() {
+        return formula;
+    }
+
+    public void setFormula(Formula formula) {
+        this.formula = formula;
+    }
+
     public StartState getStartState() {
         return startState;
     }

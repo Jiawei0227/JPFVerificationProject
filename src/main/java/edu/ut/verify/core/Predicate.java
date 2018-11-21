@@ -1,21 +1,50 @@
 package edu.ut.verify.core;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by Jerry Wang on 2018/11/5.
  */
 public class Predicate {
 
-    private String expression;
+    private String variable;  //variable in this event
+    private int[] boundary; // the boundary of the variable
+    /**
+     * in a event 0 < N <= 10
+     * variable = N;
+     * boundary = [0,10];
+     */
 
-    public Predicate(String expression) {
-        this.expression = expression;
+    public Predicate(String var) {
+        this.variable = var;
+        this.boundary = new int[2];
+        this.boundary[0] = -1000;
+        //some variable don't have an explicate boundary, set default
+        this.boundary[1] = -1000;
     }
 
-    public String getExpression() {
-        return expression;
+    public void setHigh(int high){
+        this.boundary[1] = high;
     }
 
-    public void setExpression(String expression) {
-        this.expression = expression;
+    public void setLow(int low){
+        this.boundary[0] = low;
+    }
+
+    public String getVariable() {
+        return variable;
+    }
+
+    public void setVariable(String variable) {
+        this.variable = variable;
+    }
+
+    public int[] getBoundary() {
+        return boundary;
+    }
+
+    public void setBoundary(int[] boundary) {
+        this.boundary = boundary;
     }
 }
