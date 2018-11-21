@@ -1,23 +1,14 @@
 Predicates:
-SelectSoftDrink:[No of SoftDrink <= 10]
-InsertMoney:[Amt]
+SelectSoftDrink:[N <= 10]
+InsertMoney:[Amt >= 0]
 VendingMachineBusy:[ReturnMoney >= 0]
 DispenseSoftDrink:[ReturnMoney > 0]
 NotEnoughMoney:[ReturnMoney < 0]
 
 Formulation:
 ReturnMoney = Amt - TotalMoney
-TotalMoney = calculateAll( N * P )
-P = price( 4,5,6,10 )
-
-Input:
-Amt = insert money amount
-N = insert number
-
-
-Restriction:
-ShowAvailableSoftDrink:num( N )
-SelectSoftdrink:num( N )
+TotalMoney = N * P
+p = 10
 
 
 
