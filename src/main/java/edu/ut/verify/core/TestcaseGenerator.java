@@ -1,9 +1,9 @@
 package edu.ut.verify.core;
 
-public class testcaseGenerator {
+public class TestcaseGenerator {
     private StateMachine stateMachine;
 
-    public testcaseGenerator(StateMachine sm){
+    public TestcaseGenerator(StateMachine sm){
         this.stateMachine = sm;
     }
 
