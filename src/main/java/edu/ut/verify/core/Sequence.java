@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
  */
 public class Sequence {
 
-    ArrayList<Transition> sequence;
+    private ArrayList<Transition> sequence;
 
     public int length(){
         return sequence.size();
@@ -50,6 +50,12 @@ public class Sequence {
     public void printSequence(){
         List<String> names = sequence.stream().map(Transition::getEventName).collect(Collectors.toList());
         System.out.println(String.join(" -> ", names));
+    }
+
+    public void printTransitions(){
+        for(int i =0;i<this.sequence.size();i++){
+            System.out.println(this.sequence.get(i).getEvent().toString());
+        }
     }
 
 }

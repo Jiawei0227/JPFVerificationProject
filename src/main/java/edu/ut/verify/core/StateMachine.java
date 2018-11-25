@@ -14,6 +14,27 @@ public class StateMachine {
 
     private StateChart stateChart;
 
+    public List<Sequence> getSequences() {
+        sequences.sort((o1,o2) -> (o1.length() - o2.length()));
+        return sequences;
+    }
+
+    public void setSequences(List<Sequence> sequences) {
+        this.sequences = sequences;
+    }
+
+    public static int getCircleCount() {
+        return circleCount;
+    }
+
+    public State getCurrentState() {
+        return currentState;
+    }
+
+    public void setCurrentState(State currentState) {
+        this.currentState = currentState;
+    }
+
     private List<Sequence> sequences;
 
     /**

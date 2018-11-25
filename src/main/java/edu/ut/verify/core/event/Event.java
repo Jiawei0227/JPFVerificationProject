@@ -35,4 +35,8 @@ public abstract class Event {
         this.predicate = predicate;
     }
 
+    public String toString(){
+        return ""+name+": "+predicate.toString();
+    }
+
 }

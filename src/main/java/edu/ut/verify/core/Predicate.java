@@ -11,7 +11,7 @@ public class Predicate {
     private String variable;  //variable in this event
     private int[] boundary; // the boundary of the variable
     /**
-     * in a event 0 < N <= 10
+     * in an event 0 < N <= 10
      * variable = N;
      * boundary = [0,10];
      */
@@ -47,4 +47,9 @@ public class Predicate {
     public void setBoundary(int[] boundary) {
         this.boundary = boundary;
     }
+
+    public String toString(){
+        return ""+boundary[0]+" < "+variable+" < "+boundary[1];
+    }
 }
+
