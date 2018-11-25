@@ -3,10 +3,7 @@ package edu.ut.verify.core;
 import edu.ut.verify.core.exception.NoInitialStateException;
 import edu.ut.verify.core.state.State;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Jerry Wang on 2018/11/5.
@@ -15,28 +12,6 @@ public class StateMachine {
 
     private StateChart stateChart;
     private Set<String> variableSet;
-
-    public List<Sequence> getSequences() {
-        sequences.sort((o1,o2) -> (o1.length() - o2.length()));
-        return sequences;
-    }
-
-    public void setSequences(List<Sequence> sequences) {
-        this.sequences = sequences;
-    }
-
-    public static int getCircleCount() {
-        return circleCount;
-    }
-
-    public State getCurrentState() {
-        return currentState;
-    }
-
-    public void setCurrentState(State currentState) {
-        this.currentState = currentState;
-    }
-
     private List<Sequence> sequences;
 
     /**
@@ -48,6 +23,8 @@ public class StateMachine {
         this.stateChart = stateChart;
 
         this.sequences = new ArrayList<>();
+
+        this.variableSet = new HashSet<>();
 
         currentState = stateChart.getStartState();
     }
@@ -122,5 +99,25 @@ public class StateMachine {
         }
     }
 
+    public List<Sequence> getSequences() {
+        sequences.sort((o1,o2) -> (o1.length() - o2.length()));
+        return sequences;
+    }
+
+    public void setSequences(List<Sequence> sequences) {
+        this.sequences = sequences;
+    }
+
+    public static int getCircleCount() {
+        return circleCount;
+    }
+
+    public State getCurrentState() {
+        return currentState;
+    }
+
+    public void setCurrentState(State currentState) {
+        this.currentState = currentState;
+    }
 
 }
