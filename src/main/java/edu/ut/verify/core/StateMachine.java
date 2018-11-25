@@ -68,6 +68,9 @@ public class StateMachine {
         List<Transition> transitionList = stateChart.getStateTransitionMap().get(currentState);
 
         for( Transition transition : transitionList ){
+
+            variableSet.add(transition.getEvent().getPredicate().getVariable());
+
             //System.out.println(currentState.getName() + " -> " + transition.getEvent().getName());
             sequence.addTransition(transition);
             State nextState = transition.toState;
