@@ -14,6 +14,14 @@ public class StateMachine {
     private Set<String> variableSet;
     private List<Sequence> sequences;
 
+    public Set<String> getVariableSet() {
+        return variableSet;
+    }
+
+    public void setVariableSet(Set<String> variableSet) {
+        this.variableSet = variableSet;
+    }
+
     /**
      * contains
      */
@@ -101,6 +109,7 @@ public class StateMachine {
             sequences.get(i).printSequence();
         }
     }
+
 
     public List<Sequence> getSequences() {
         sequences.sort((o1,o2) -> (o1.length() - o2.length()));
