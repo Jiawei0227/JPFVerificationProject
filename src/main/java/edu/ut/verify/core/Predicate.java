@@ -19,9 +19,9 @@ public class Predicate {
     public Predicate(String var) {
         this.variable = var;
         this.boundary = new int[2];
-        this.boundary[0] = -1000;
+        this.boundary[0] = -10000;
         //some variable don't have an explicate boundary, set default
-        this.boundary[1] = -1000;
+        this.boundary[1] = -10000;
     }
 
     public void setHigh(int high){

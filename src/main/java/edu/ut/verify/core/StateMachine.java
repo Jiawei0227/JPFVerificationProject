@@ -6,6 +6,7 @@ import edu.ut.verify.core.state.State;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Jerry Wang on 2018/11/5.
@@ -13,6 +14,7 @@ import java.util.List;
 public class StateMachine {
 
     private StateChart stateChart;
+    private Set<String> variableSet;
 
     public List<Sequence> getSequences() {
         sequences.sort((o1,o2) -> (o1.length() - o2.length()));

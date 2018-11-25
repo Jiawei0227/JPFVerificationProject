@@ -1,5 +1,5 @@
 Predicates:
-SelectSoftDrink:[N <= 10]
+SelectSoftDrink:[N <= 10][N > 0]
 InsertMoney:[Amt >= 0]
 VendingMachineBusy:[ReturnMoney >= 0]
 DispenseSoftDrink:[ReturnMoney > 0]
