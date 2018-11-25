@@ -13,7 +13,7 @@ public class Predicate {
     /**
      * in an event 0 < N <= 10
      * variable = N;
-     * boundary = [0,10];
+     * boundary = [1,10];
      */
 
     public Predicate(String var) {
