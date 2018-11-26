@@ -44,9 +44,13 @@ public class TestCase {
         if(valid == false)
             return "error path";
         else{
-            for(String str : values.keySet()){
-                res = res + str + values.get(str);
+            if(values != null){
+                for(String str : values.keySet()){
+                    res = res +" "+ str +" = "+ values.get(str).toString();
+                }
             }
+            else
+                res = "NO Input";
         }
 
         return res;

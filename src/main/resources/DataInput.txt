@@ -1,11 +1,11 @@
 Predicates:
 SelectSoftdrink:N <= 10
-SelectSoftdrink:N >= 0
+SelectSoftdrink:N > 0
 InsertMoney:Amt >= 0
 VendingMachineBusy:ReturnMoney >= 0
 DispenseSoftDrink:ReturnMoney > 0
 NotEnoughMoney:ReturnMoney < 0
-ShowAvailableSoftDrink:P >= 0
+ShowAvailableSoftDrink:P > 0
 ShowAvailableSoftDrink:P <= 5
 AmountCount:TotalMoney >= 0
 Formulation:

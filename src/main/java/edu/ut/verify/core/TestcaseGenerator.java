@@ -51,13 +51,18 @@ public class TestcaseGenerator {
             else if(currentVars.size() != this.allVariable.size()){
                 //se.printSequence();
                 TestCase tc = new TestCase(false,se,null);
-                //this.caseList.add(tc);
+                this.caseList.add(tc);
             }
             else{
+                //System.out.println("values");
                 assignValue(currentVars,values);
+//                System.out.println(values.keySet().toString());
+//                System.out.println(values.values().toString());
                 if(adjustValue(values,this.formula,this.inputVariable,currentVars)){
                     TestCase tc = new TestCase(true,se,values);
                     this.caseList.add(tc);
+//                    System.out.println(values.keySet().toString());
+//                    System.out.println(values.values().toString());
                 }
                 else{
                     TestCase tc = new TestCase(false,se,values);
@@ -161,8 +166,12 @@ public class TestcaseGenerator {
             int max= vars.get(var).getHigh();
             int min= vars.get(var).getLow();
             Random random = new Random();
+            int s = 0;
 
-            int s =  random.nextInt(max)%(max-min+1) + min;
+            if(min>=0)
+                s =  random.nextInt(max)%(max-min+1) + min;
+            else
+                s = random.nextInt(max - min) + min;
             //System.out.println(s);
             values.put(var,s);
         }
