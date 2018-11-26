@@ -61,13 +61,10 @@ public class TestcaseGenerator {
             }
 
         }
-//        for(int i =0; i<sequenceList.size();i++){
-//            sequenceList.get(i).printTransitions();
-//        }
     }
 
     private static boolean adjustValue(Map<String,Integer> values,Formula formula,Set<String> inputVariable,Map<String,Predicate> currentVars){
-        Stack<String> process = new Stack();
+        Stack<String> process = new Stack<>();
         for(String var : formula.getForm().keySet()){
             process.push(var);
         }
@@ -138,12 +135,6 @@ public class TestcaseGenerator {
         return true;
     }
 
-//    private static String findInput(Set<String> inputVariable,String[] expression){
-//        if(inputVariable.contains(expression[0]))
-//            return expression[0];
-//        else
-//            return expression[2];
-//    }
 
     private static int rightValue(String[] expression,Map<String,Integer> values){
         if(expression == null || expression.length == 0)
