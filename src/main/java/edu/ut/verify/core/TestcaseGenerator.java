@@ -42,18 +42,173 @@ public class TestcaseGenerator {
                 TestCase tc = new TestCase(true,se,null);
                 this.caseList.add(tc);
             }
+            // invalid path detect
             else if(currentVars.size() != this.allVariable.size()){
                 se.printSequence();
                 TestCase tc = new TestCase(false,se,null);
                 this.caseList.add(tc);
             }
             else{
-
+                assignValue(currentVars,values);
+                if(adjustValue(values,this.formula,this.inputVariable,currentVars)){
+                    TestCase tc = new TestCase(true,se,values);
+                    this.caseList.add(tc);
+                }
+                else{
+                    TestCase tc = new TestCase(false,se,values);
+                    this.caseList.add(tc);
+                }
             }
 
         }
 //        for(int i =0; i<sequenceList.size();i++){
 //            sequenceList.get(i).printTransitions();
 //        }
+    }
+
+    private static boolean adjustValue(Map<String,Integer> values,Formula formula,Set<String> inputVariable,Map<String,Predicate> currentVars){
+        Stack<String> process = new Stack();
+        for(String var : formula.getForm().keySet()){
+            process.push(var);
+        }
+
+        while(!process.isEmpty()){
+            String var = process.pop();
+            int left = values.get(var);
+            int right = rightValue(formula.getForm().get(var),values);
+            if(left != right){
+                while(left != right && left<=currentVars.get(var).getHigh() && left>=currentVars.get(var).getLow()){
+                    if(left<right)
+                        left++;
+                    else if(left>right)
+                        left--;
+                }
+
+                if(left != right){
+                    String rightVar;
+                    String[] expression = formula.getForm().get(var);
+                    rightVar = expression[0];
+                    if (!inputVariable.contains(rightVar))
+                        process.push(rightVar);
+                    int rightChange = values.get(rightVar);
+                    while (left != right && rightChange <= currentVars.get(rightVar).getHigh() && rightChange >= currentVars.get(rightVar).getLow()) {
+                        if(left < right){
+                            rightChange--;
+                            values.put(rightVar,rightChange);
+                            right = rightValue(formula.getForm().get(var),values);
+                            if(left>right)
+                                break;
+                        }
+                        else if(left>right){
+                            rightChange++;
+                            values.put(rightVar,rightChange);
+                            right = rightValue(formula.getForm().get(var),values);
+                            if(left<right)
+                                break;
+                        }
+
+                    }
+
+                    right = rightValue(formula.getForm().get(var),values);
+
+                    if(left != right){
+                        while(left != right && left<=currentVars.get(var).getHigh() && left>=currentVars.get(var).getLow()){
+                            if(left<right)
+                                left++;
+                            else if(left>right)
+                                left--;
+                        }
+                        if (left != right)
+                            return false;
+                        else{
+                            values.put(var,left);
+                            values.put(rightVar,rightChange);
+                        }
+                    }
+                    else{
+                        values.put(var,left);
+                        values.put(rightVar,rightChange);
+                    }
+                }
+                else {
+                    values.put(var,left);
+                }
+            }
+        }
+        return true;
+    }
+
+//    private static String findInput(Set<String> inputVariable,String[] expression){
+//        if(inputVariable.contains(expression[0]))
+//            return expression[0];
+//        else
+//            return expression[2];
+//    }
+
+    private static int rightValue(String[] expression,Map<String,Integer> values){
+        if(expression == null || expression.length == 0)
+            return 0;
+        if(expression[1].equals("+"))
+            return values.get(expression[0]) + values.get(expression[2]);
+        else if(expression[1].equals("-"))
+            return values.get(expression[0]) - values.get(expression[2]);
+        else if(expression[1].equals("*"))
+            return values.get(expression[0]) * values.get(expression[2]);
+        else if(expression[1].equals("/"))
+            return values.get(expression[0]) / values.get(expression[2]);
+
+        return 0;
+    }
+
+    private static void assignValue(Map<String,Predicate> vars,Map<String,Integer> values){
+        for(String var:vars.keySet()){
+            int max= vars.get(var).getHigh();
+            int min= vars.get(var).getLow();
+            Random random = new Random();
+
+            int s = random.nextInt(max)%(max-min+1) + min;
+            //System.out.println(s);
+            values.put(var,s);
+        }
+    }
+
+    public List<Sequence> getSequenceList() {
+        return sequenceList;
+    }
+
+    public void setSequenceList(List<Sequence> sequenceList) {
+        this.sequenceList = sequenceList;
+    }
+
+    public Formula getFormula() {
+        return formula;
+    }
+
+    public void setFormula(Formula formula) {
+        this.formula = formula;
+    }
+
+    public Set<String> getAllVariable() {
+        return allVariable;
+    }
+
+    public void setAllVariable(Set<String> allVariable) {
+        this.allVariable = allVariable;
+    }
+
+    public Set<String> getInputVariable() {
+        return inputVariable;
+    }
+
+    public void setInputVariable(Set<String> inputVariable) {
+        this.inputVariable = inputVariable;
+    }
+
+    public List<TestCase> getCaseList() {
+        return caseList;
+    }
+
+    public void setCaseList(List<TestCase> caseList) {
+        this.caseList = caseList;
     }
 }

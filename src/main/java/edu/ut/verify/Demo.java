@@ -9,17 +9,13 @@ import java.io.File;
 
 public class Demo {
     public static void main(String[] args) throws NoInitialStateException {
-        Transition tr = new Transition();
-        Event ev = new CallEvent();
-        Predicate pr = new Predicate("Var 1");
-        pr.setLow(0);
-        pr.setHigh(10);
+        String fileName = ProcessController.class.getClassLoader().getResource("VendingMachine.xmi").getFile();
+        File file = new File(fileName);
+        StateChart st = XMIPaser.parser(file);
 
 
-        ev.setName("test 1");
-        ev.setPredicate(pr);
-        tr.setEvent(ev);
-
-        System.out.println(tr.getEvent().toString());
+        StateMachine stateMachine = new StateMachine(st);
+        TestcaseGenerator tg = new TestcaseGenerator(stateMachine);
+        tg.testGenerate();
     }
 }
