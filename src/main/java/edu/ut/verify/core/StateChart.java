@@ -140,10 +140,20 @@ public class StateChart {
                     } else if (form) {
 
                         splitLine = line.split("\\s");
-                        formula.putFormula(splitLine[0], Arrays.copyOfRange(splitLine,1,splitLine.length-1));
+                        /*for (int i = 0; i < splitLine.length; i++) {
+                            System.out.println(splitLine[i]);
+                        }*/
+
+                        String[] templeStr = new String[3];
+                        for (int i = 2; i < splitLine.length; i++) {
+                            templeStr[i-2] = splitLine[i];
+                        }
+
+                        formula.putFormula(splitLine[0], templeStr);
                     }
 
                 }
+
             } catch (IOException e) {
                 e.printStackTrace();
             }

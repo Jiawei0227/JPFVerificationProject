@@ -30,7 +30,7 @@ public class Formula {
     public String toString(){
         String res = "";
         for(String str : form.keySet()){
-            res = res+str+ form.get(str).toString() +"\r\n";
+            res = res+str+" = "+form.get(str)[0]+form.get(str)[1]+form.get(str)[2] +"\r\n";
         }
 
         return res;
