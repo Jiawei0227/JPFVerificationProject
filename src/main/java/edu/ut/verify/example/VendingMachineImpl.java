@@ -1,7 +1,5 @@
 package edu.ut.verify.example;
 
-import java.util.List;
-
 /**
  * Created by Jerry Wang on 2018/11/26.
  */
@@ -26,18 +24,18 @@ public class VendingMachineImpl implements VendingMachineService {
         this.selectDisplay();
 
         // for each item select the items
-        order.getItems().forEach(e-> {
-            for(int i = 0 ; i < e.getNumber(); i++){
-                this.showAvailableSoftDrink();
-                this.selectSoftDrink();
-                this.availableDrinkAfterSell();
-                this.showToSelectPanel();
-            }
-        });
+//        order.getItems().forEach(e-> {
+//            for(int i = 0 ; i < e.getNumber(); i++){
+//                this.showAvailableSoftDrink();
+//                this.selectSoftDrink();
+//                this.availableDrinkAfterSell();
+//                this.showToSelectPanel();
+//            }
+//        });
 
         insertMoney();
         verifyAmount();
-        int total = amountCount(order.getItems());
+        int total = amountCount(order);
 
         if(order.getInputMoney() < total){
             this.notEnoughMoney();
@@ -50,9 +48,6 @@ public class VendingMachineImpl implements VendingMachineService {
         this.powerOff();
 
         //TODO service logic implementation a little bit rely on the order class input
-
-
-
 
         return this.resultMsg;
     }
@@ -93,9 +88,9 @@ public class VendingMachineImpl implements VendingMachineService {
     }
 
     @Override
-    public int amountCount(List<Item> items) {
+    public int amountCount(Order order) {
         resultMsg.addPath(PathStatus.AMOUNT_COUNT);
-        return items.stream().mapToInt(Item::getTotalPrice).reduce((x,y)->x+y).getAsInt();
+        return order.getNumber() * order.getPrice();
     }
 
     @Override

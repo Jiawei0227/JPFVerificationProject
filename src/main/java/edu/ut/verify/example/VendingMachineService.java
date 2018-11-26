@@ -1,7 +1,5 @@
 package edu.ut.verify.example;
 
-import java.util.List;
-
 /**
  * Created by Jerry Wang on 2018/11/26.
  */
@@ -28,7 +26,7 @@ public interface VendingMachineService {
 
     void verifyAmount();
 
-    int amountCount(List<Item> items);
+    int amountCount(Order order);
 
     void showToSelectPanel();
 
