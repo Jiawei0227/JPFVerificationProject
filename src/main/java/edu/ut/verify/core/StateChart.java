@@ -103,7 +103,7 @@ public class StateChart {
                         form = true;
                     } else if (pred) {
 
-
+                        System.out.println(splitLine[0]);
                         Transition curTrans = getTransition(splitLine[0]);
 
                         eq = splitLine[1].split("\\s");
