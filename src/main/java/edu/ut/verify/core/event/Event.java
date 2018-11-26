@@ -11,7 +11,7 @@ public abstract class Event {
 
     private String Id;
 
-    private Predicate predicate;
+    private Predicate predicate = null;
 
     public String getName() {
         return name;
