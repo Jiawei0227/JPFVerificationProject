@@ -1,21 +1,25 @@
 package edu.ut.verify.example;
 
-import java.util.ArrayList;
-import java.util.List;
+import edu.ut.verify.core.TestCase;
 
 /**
  * Created by Jerry Wang on 2018/11/26.
  */
 public class Order {
 
-    private List<Item> items;
+    private int price;
+
+    private int number;
 
     private int inputMoney;
 
-    public Order(){
-        this.items = new ArrayList<>();
-    }
+    public Order(TestCase testCase){
 
+        this.price = testCase.getValues().get("P");
+        this.number = testCase.getValues().get("N");
+        this.inputMoney = testCase.getValues().get("Amt");
+
+    }
 
     public int getInputMoney() {
         return inputMoney;
@@ -25,12 +29,20 @@ public class Order {
         this.inputMoney = inputMoney;
     }
 
-    public List<Item> getItems() {
-        return items;
+    public int getPrice() {
+        return price;
     }
 
-    public void addItem(Item item){
-        this.items.add(item);
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 
 }

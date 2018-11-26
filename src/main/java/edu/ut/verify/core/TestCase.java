@@ -1,6 +1,5 @@
 package edu.ut.verify.core;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class TestCase {
@@ -12,5 +11,29 @@ public class TestCase {
         this.sequence = sequence;
         this.valid = valid;
         this.values = values;
+    }
+
+    public Sequence getSequence() {
+        return sequence;
+    }
+
+    public void setSequence(Sequence sequence) {
+        this.sequence = sequence;
+    }
+
+    public Map<String, Integer> getValues() {
+        return values;
+    }
+
+    public void setValues(Map<String, Integer> values) {
+        this.values = values;
+    }
+
+    public boolean isValid() {
+        return valid;
+    }
+
+    public void setValid(boolean valid) {
+        this.valid = valid;
     }
 }
