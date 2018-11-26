@@ -26,4 +26,13 @@ public class Formula {
     public void setForm(Map<String, String[]> form) {
         this.form = form;
     }
+
+    public String toString(){
+        String res = "";
+        for(String str : form.keySet()){
+            res = res+str+ form.get(str).toString() +"\r\n";
+        }
+
+        return res;
+    }
 }
