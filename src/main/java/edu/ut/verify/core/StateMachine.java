@@ -77,7 +77,8 @@ public class StateMachine {
 
         for( Transition transition : transitionList ){
 
-            //variableSet.add(transition.getEvent().getPredicate().getVariable());
+            if(transition.getEvent().getPredicate().getVariable() != null)
+                variableSet.add(transition.getEvent().getPredicate().getVariable());
 
             //System.out.println(currentState.getName() + " -> " + transition.getEvent().getName());
             sequence.addTransition(transition);

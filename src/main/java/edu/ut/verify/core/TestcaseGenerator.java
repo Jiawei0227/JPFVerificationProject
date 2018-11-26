@@ -17,9 +17,11 @@ public class TestcaseGenerator {
         this.allVariable = sm.getVariableSet();
         this.sequenceList = sm.getSequences();
         this.caseList = new ArrayList<>();
+        this.inputVariable = new HashSet<>();
         /*
         get variables not in the formula
         */
+        //System.out.println(allVariable.toString());
         for(String var : this.allVariable){
             if(!formula.getForm().containsKey(var))
                 this.inputVariable.add(var);
@@ -27,26 +29,29 @@ public class TestcaseGenerator {
     }
 
     public void testGenerate(){
+        //System.out.println(allVariable.toString());
         for(Sequence se : sequenceList){
             Map<String,Predicate> currentVars = new HashMap<>();//<Amt,Amt[0,-1000]>
             Map<String,Integer> values = new HashMap<>();// <Amt,10>
 
             //find vars in current sequence
             for(Transition tran : se.getSequence()){
-                if(tran.getEvent().getPredicate() != null)
+                if(tran.getEvent().getPredicate().getVariable() != null)
                     currentVars.put(tran.getEvent().getPredicate().getVariable(),tran.getEvent().getPredicate());
             }
 
+            //System.out.println(currentVars.keySet().toString());
+
             if(currentVars.size() == 0) {
-                se.printSequence();
+                //se.printSequence();
                 TestCase tc = new TestCase(true,se,null);
                 this.caseList.add(tc);
             }
             // invalid path detect
             else if(currentVars.size() != this.allVariable.size()){
-                se.printSequence();
+                //se.printSequence();
                 TestCase tc = new TestCase(false,se,null);
-                this.caseList.add(tc);
+                //this.caseList.add(tc);
             }
             else{
                 assignValue(currentVars,values);
@@ -157,7 +162,7 @@ public class TestcaseGenerator {
             int min= vars.get(var).getLow();
             Random random = new Random();
 
-            int s = random.nextInt(max)%(max-min+1) + min;
+            int s =  random.nextInt(max)%(max-min+1) + min;
             //System.out.println(s);
             values.put(var,s);
         }

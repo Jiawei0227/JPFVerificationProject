@@ -57,7 +57,10 @@ public class Predicate {
     }
 
     public String toString(){
-        return ""+boundary[0]+" < "+variable+" < "+boundary[1];
+        if(this.variable != null)
+            return ""+boundary[0]+" < "+variable+" < "+boundary[1];
+        else
+            return "";
     }
 }
 

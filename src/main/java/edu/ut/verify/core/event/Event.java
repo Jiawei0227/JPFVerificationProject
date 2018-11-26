@@ -40,7 +40,10 @@ public abstract class Event {
     }
 
     public String toString(){
-        return ""+name+": "+predicate.toString();
+        if(predicate != null)
+            return ""+name+": "+predicate.toString();
+        else
+            return "";
     }
 
 }

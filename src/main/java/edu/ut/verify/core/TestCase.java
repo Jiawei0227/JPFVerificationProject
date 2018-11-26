@@ -36,4 +36,19 @@ public class TestCase {
     public void setValid(boolean valid) {
         this.valid = valid;
     }
+
+    public String toString(){
+        sequence.printSequence();
+        String res = "";
+
+        if(valid == false)
+            return "error path";
+        else{
+            for(String str : values.keySet()){
+                res = res + str + values.get(str);
+            }
+        }
+
+        return res;
+    }
 }

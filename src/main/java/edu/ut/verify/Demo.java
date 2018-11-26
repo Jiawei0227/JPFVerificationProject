@@ -12,10 +12,21 @@ public class Demo {
         String fileName = ProcessController.class.getClassLoader().getResource("VendingMachine.xmi").getFile();
         File file = new File(fileName);
         StateChart st = XMIPaser.parser(file);
+        String dataInput = ProcessController.class.getClassLoader().getResource("DataInput.txt").getFile();
+        st.parseDataInput(dataInput);
 
+//        StateMachine stateMachine = new StateMachine(st);
+//        stateMachine.process();
+//        stateMachine.getSequences().get(19).printTransitions();
+
+//        System.out.println(st.getFormula());
 
         StateMachine stateMachine = new StateMachine(st);
         TestcaseGenerator tg = new TestcaseGenerator(stateMachine);
         tg.testGenerate();
+
+        for(TestCase tc : tg.getCaseList()){
+            System.out.println(tc.toString());
+        }
     }
 }

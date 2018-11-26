@@ -88,7 +88,7 @@ public class StateChart {
                 String splitLine[];
                 String eq[];
                 Predicate curPred;
-                Formula formula = new Formula();
+                formula = new Formula();
 
                 while ((line = br.readLine())  != null) {
 
@@ -150,6 +150,7 @@ public class StateChart {
                         }
 
                         formula.putFormula(splitLine[0], templeStr);
+                        //System.out.println(this.formula);
                     }
 
                 }
