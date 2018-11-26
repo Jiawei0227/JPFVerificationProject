@@ -16,8 +16,8 @@ public class Predicate {
      * boundary = [1,10];
      */
 
-    public Predicate(String var) {
-        this.variable = var;
+    public Predicate() {
+        this.variable = null;
         this.boundary = new int[2];
         this.boundary[0] = -200;
         //some variable don't have an explicate boundary, set default

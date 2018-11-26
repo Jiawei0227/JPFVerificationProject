@@ -8,11 +8,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Collections;
-import java.util.Iterator;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -81,43 +77,70 @@ public class StateChart {
             File file = new File(fileName);
 
             boolean pred = false;
-            boolean formula = false;
+            boolean form = false;
 
             try
             {
                 FileReader fr = new FileReader(file);
                 BufferedReader br = new BufferedReader(fr);
 
-                String line;
+                String line, varName;
+                String splitLine[];
+                String eq[];
+                Predicate curPred;
+                Formula formula = new Formula();
 
                 while ((line = br.readLine())  != null) {
 
 
-                    System.out.println(line);
-                    String splitLine[] = line.split(":");
-                    System.out.println(splitLine.length);
+                    //System.out.println(line);
+                    splitLine = line.split(":");
 
                     if (splitLine[0].equals("Predicates")) {
                         pred = true;
                     } else if (splitLine[0].equals("Formulation")) {
                         pred = false;
-                        formula = true;
+                        form = true;
                     } else if (pred) {
 
 
-                            //if (splitLine.length > 1) System.out.println(splitLine[1]);
-
                         Transition curTrans = getTransition(splitLine[0]);
-                        System.out.println(curTrans.event.getName());
-                        /*Predicate curPred = curTrans.event.getPredicate();
-                        if (curPred == null) {
-                            curPred = new Predicate();
 
-                        }*/
-                    } else if (formula) {
+                        eq = splitLine[1].split("\\s");
 
+                        curPred = curTrans.event.getPredicate();
+                        curPred.setVariable(eq[0]);
 
+                        Integer boundary = Integer.parseInt(eq[2]);
 
+                        if (eq[1].equals("<=")){
+                            // <=
+                            curPred.setHigh(boundary);
+
+                        } else if (eq[1].equals(">=")) {
+                            // >=
+                            curPred.setLow(boundary);
+
+                        } else if (eq[1].equals("<")) {
+                            // <
+                            curPred.setHigh(boundary-1);
+
+                        } else if (eq[1].equals(">")) {
+                            // >
+                            curPred.setLow(boundary+1);
+
+                        } else if (eq[1].equals("=")) {
+                            // =
+                            curPred.setLow(boundary);
+                            curPred.setHigh(boundary);
+                        }
+
+                        //System.out.println(curPred.toString());
+
+                    } else if (form) {
+
+                        splitLine = line.split("\\s");
+                        formula.putFormula(splitLine[0], Arrays.copyOfRange(splitLine,1,splitLine.length-1));
                     }
 
                 }

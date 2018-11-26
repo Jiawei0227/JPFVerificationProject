@@ -11,7 +11,11 @@ public abstract class Event {
 
     private String Id;
 
-    private Predicate predicate = null;
+    private Predicate predicate;
+
+    public Event(){
+        this.predicate = new Predicate();
+    }
 
     public String getName() {
         return name;
