@@ -26,6 +26,8 @@ public class TestcaseGenerator {
             if(!formula.getForm().containsKey(var))
                 this.inputVariable.add(var);
         }
+
+        //System.out.println(inputVariable.toString());
     }
 
     public void testGenerate(){
@@ -50,8 +52,25 @@ public class TestcaseGenerator {
             // invalid path detect
             else if(currentVars.size() != this.allVariable.size()){
                 //se.printSequence();
-                TestCase tc = new TestCase(false,se,null);
-                this.caseList.add(tc);
+                int flag =1;
+                for(String var_cur : currentVars.keySet()){
+                    if(!inputVariable.contains(var_cur)){
+                        flag = -1;
+                        break;
+                    }
+                }
+                if(flag == -1){
+                    //if variables may affect each other
+                    TestCase tc = new TestCase(false,se,null);
+                    this.caseList.add(tc);
+                }
+                else{
+                    //if all variables do not affect each other
+                    assignValue(currentVars,values);
+                    TestCase tc = new TestCase(true,se,values);
+                    this.caseList.add(tc);
+                }
+
             }
             else{
                 //System.out.println("values");
