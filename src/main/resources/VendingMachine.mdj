@@ -1905,7 +1905,7 @@
 										"$ref": "AAAAAAFnCZ26zfoUcvQ="
 									},
 									"edgePosition": 1,
-									"text": "ReturnMoney"
+									"text": "NotEnoughMoney"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -2670,9 +2670,9 @@
 										"$ref": "AAAAAAFnUiFjmD0CfFU="
 									},
 									"font": "Arial;13;0",
-									"left": 47,
+									"left": 41,
 									"top": 432,
-									"width": 104.06982421875,
+									"width": 116.3525390625,
 									"height": 13,
 									"alpha": -0.12388102782163479,
 									"distance": 134.6291201783626,
@@ -2680,7 +2680,7 @@
 										"$ref": "AAAAAAFnUiFjmD0DSko="
 									},
 									"edgePosition": 1,
-									"text": "NotEnoughMoney"
+									"text": "NoChangeDispense"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -3010,7 +3010,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFnCZ26zfoTcSQ="
 									},
-									"name": "ReturnMoney"
+									"name": "NotEnoughMoney"
 								}
 							]
 						},
@@ -3194,7 +3194,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFnUiFjmD0CfFU="
 									},
-									"name": "NotEnoughMoney"
+									"name": "NoChangeDispense"
 								}
 							]
 						}
