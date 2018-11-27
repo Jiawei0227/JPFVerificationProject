@@ -38,12 +38,9 @@ public class TestCase {
     }
 
     public String toString(){
-        sequence.printSequence();
-//        for(Transition tr : sequence.getSequence())
-//            System.out.println(tr.getEvent().toString());
         String res = "";
 
-        if(valid == false)
+        if(!valid)
             return "error path";
         else{
             if(values != null){

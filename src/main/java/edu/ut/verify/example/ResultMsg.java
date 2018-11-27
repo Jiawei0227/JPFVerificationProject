@@ -7,7 +7,7 @@ public class ResultMsg {
 
     private PathStatus pathStatus;
 
-    private String returnMoney;
+    private int returnMoney;
 
     public ResultMsg(){
         this.pathStatus = new PathStatus();
@@ -25,11 +25,12 @@ public class ResultMsg {
         this.pathStatus = pathStatus;
     }
 
-    public String getReturnMoney() {
+    public int getReturnMoney() {
         return returnMoney;
     }
 
-    public void setReturnMoney(String returnMoney) {
+    public void setReturnMoney(int returnMoney) {
         this.returnMoney = returnMoney;
     }
+
 }

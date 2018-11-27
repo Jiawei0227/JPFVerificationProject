@@ -16,7 +16,7 @@ public class VendingMachineImpl implements VendingMachineService {
 
         this.powerOn();
 
-        if ( order == null ){
+        if ( order.isEmpty() ){
             this.powerOff();
             return this.resultMsg;
         }
@@ -44,7 +44,7 @@ public class VendingMachineImpl implements VendingMachineService {
             this.dispenseSoftdrink();
         }
 
-        this.changeDispense();
+        this.changeDispense(order);
         this.powerOff();
 
         //TODO service logic implementation a little bit rely on the order class input
@@ -119,8 +119,13 @@ public class VendingMachineImpl implements VendingMachineService {
     }
 
     @Override
-    public void changeDispense() {
+    public void changeDispense(Order order) {
         resultMsg.addPath(PathStatus.CHANGE_DISPENSE);
+        int reMoney = order.getInputMoney()-order.getNumber()*order.getPrice();
+        if(reMoney < 0)
+            resultMsg.setReturnMoney(order.getInputMoney());
+        else
+            resultMsg.setReturnMoney(reMoney);
     }
 
 

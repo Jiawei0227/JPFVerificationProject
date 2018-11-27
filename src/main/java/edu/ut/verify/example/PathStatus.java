@@ -18,6 +18,10 @@ public class PathStatus {
         return pathCoverage;
     }
 
+    public String toString(){
+        return String.join(" -> ", pathCoverage);
+    }
+
     public boolean addPath(String path){
         return this.pathCoverage.add(path);
     }

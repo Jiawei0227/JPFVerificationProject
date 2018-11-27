@@ -7,6 +7,8 @@ import edu.ut.verify.core.TestCase;
  */
 public class Order {
 
+    private boolean empty;
+
     private int price;
 
     private int number;
@@ -14,11 +16,22 @@ public class Order {
     private int inputMoney;
 
     public Order(TestCase testCase){
-
+        if(testCase.getValues() == null) {
+            empty = true;
+            return;
+        }
         this.price = testCase.getValues().get("P");
         this.number = testCase.getValues().get("N");
         this.inputMoney = testCase.getValues().get("Amt");
 
+    }
+
+    public boolean isEmpty() {
+        return empty;
+    }
+
+    public void setEmpty(boolean empty) {
+        this.empty = empty;
     }
 
     public int getInputMoney() {

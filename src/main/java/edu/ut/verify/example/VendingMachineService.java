@@ -38,6 +38,6 @@ public interface VendingMachineService {
 
     void dispenseSoftdrink();
 
-    void changeDispense();
+    void changeDispense(Order order);
 
 }
