@@ -15,6 +15,8 @@ public class Order {
 
     private int inputMoney;
 
+    private int returnMoney;
+
     public Order(TestCase testCase){
         if(testCase.getValues() == null) {
             empty = true;
@@ -23,7 +25,16 @@ public class Order {
         this.price = testCase.getValues().getOrDefault("P",-1);
         this.number = testCase.getValues().getOrDefault("N",-1);
         this.inputMoney = testCase.getValues().getOrDefault("Amt",-1);
+        this.returnMoney = testCase.getValues().getOrDefault("returnMoney",Integer.MIN_VALUE);
 
+    }
+
+    public int getReturnMoney() {
+        return returnMoney;
+    }
+
+    public void setReturnMoney(int returnMoney) {
+        this.returnMoney = returnMoney;
     }
 
     public boolean isEmpty() {

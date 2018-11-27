@@ -60,7 +60,7 @@ public class ProcessController {
 
                 if(testCase.getValues() != null) {
                     int actualReturnMoney = re.getReturnMoney();
-                    int inputReturnMoney = testCase.getValues().getOrDefault("ReturnMoney",Integer.MIN_VALUE) == -1? testCase.getValues().getOrDefault("Amt",-1):testCase.getValues().getOrDefault("ReturnMoney",Integer.MIN_VALUE);
+                    int inputReturnMoney = order.getReturnMoney() == -1? order.getInputMoney():order.getReturnMoney();
 
                     System.out.println("Actual ReturnMoney :"+actualReturnMoney + " "+ (actualReturnMoney==inputReturnMoney?"==":"!=") +" Input ReturnMoney :" + inputReturnMoney);
                 }
