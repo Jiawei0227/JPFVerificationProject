@@ -41,7 +41,7 @@ public class TestCase {
         String res = "";
 
         if(!valid)
-            return "error path";
+            return " INVALID PATH";
         else{
             if(values != null){
                 for(String str : values.keySet()){
@@ -49,7 +49,7 @@ public class TestCase {
                 }
             }
             else
-                res = "NO Input";
+                res = " NO INPUT";
         }
 
         return res;

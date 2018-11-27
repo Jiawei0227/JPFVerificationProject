@@ -41,33 +41,47 @@ public class ProcessController {
 
     public static void testCaseEvaluator(List<TestCase> testCases){
 
-//        int number = 0;
-//        for(TestCase testCase : testCases){
-//
-//            System.out.println("----------------------------------------------");
-//            System.out.print(String.format("Path %2d : ",number+1));
-//            testCase.getSequence().printSequence();
-//
-//            System.out.println("Parameter : " + testCase.toString());
-//
-//
-//            System.out.println("----------------------------------------------");
-//            number++;
-//        }
+        int number = 0;
+        for(TestCase testCase : testCases){
 
-        testCases.stream().filter(TestCase::isValid).forEach(e->{
-            System.out.println("--------------------------------");
+            System.out.println("--------------------"+String.format("Path %2d : ",number+1)+"----------------------");
+            System.out.println("Parameter   :" + testCase.toString());
 
-            System.out.println("Variables : "+e.toString());
+            System.out.print("Sequences   : ");
+            testCase.getSequence().printSequence();
 
-            System.out.print("Transactions : ");
-            e.getSequence().printSequence();
+            if(testCase.isValid()) {
 
-            Order order = new Order(e);
-            VendingMachineService vendingMachineService = new VendingMachineImpl();
-            ResultMsg re = vendingMachineService.purchasing(order);
-            System.out.println("Actual Path  : "+re.getPathStatus().getPathCoverage().toString());
-            System.out.println("--------------------------------");
-        });
+                Order order = new Order(testCase);
+                VendingMachineService vendingMachineService = new VendingMachineImpl();
+                ResultMsg re = vendingMachineService.purchasing(order);
+                System.out.println("Actual Path : " + re.getPathStatus().getPathCoverage().toString());
+
+                if(testCase.getValues() != null) {
+                    int actualReturnMoney = re.getReturnMoney();
+                    int inputReturnMoney = testCase.getValues().get("ReturnMoney") == -1? testCase.getValues().get("Amt"):testCase.getValues().get("ReturnMoney");
+
+                    System.out.println("Actual ReturnMoney :"+actualReturnMoney + " "+ (actualReturnMoney==inputReturnMoney?"==":"!=") +" Input ReturnMoney :" + inputReturnMoney);
+                }
+            }
+
+            System.out.println("----------------------------------------------------");
+            number++;
+        }
+
+//        testCases.stream().filter(TestCase::isValid).forEach(e->{
+//            System.out.println("--------------------------------");
+//
+//            System.out.println("Variables : "+e.toString());
+//
+//            System.out.print("Transactions : ");
+//            e.getSequence().printSequence();
+//
+//            Order order = new Order(e);
+//            VendingMachineService vendingMachineService = new VendingMachineImpl();
+//            ResultMsg re = vendingMachineService.purchasing(order);
+//            System.out.println("Actual Path  : "+re.getPathStatus().getPathCoverage().toString());
+//            System.out.println("--------------------------------");
+//        });
     }
 }
