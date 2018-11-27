@@ -32,6 +32,7 @@ public class ProcessController {
         StateMachine stateMachine = new StateMachine(st);
         TestcaseGenerator tg = new TestcaseGenerator(stateMachine);
         tg.testGenerate();
+        //System.out.println(tg.getCaseList().get(1).toString());
 
 
         // testcase generate

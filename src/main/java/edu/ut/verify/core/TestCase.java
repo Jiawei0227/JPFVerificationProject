@@ -38,6 +38,8 @@ public class TestCase {
     }
 
     public String toString(){
+
+        //sequence.printSequence();
         String res = "";
 
         if(!valid)
