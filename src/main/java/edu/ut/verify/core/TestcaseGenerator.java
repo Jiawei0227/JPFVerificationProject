@@ -84,7 +84,7 @@ public class TestcaseGenerator {
             int left = values.get(var);
             int right = rightValue(formula.getForm().get(var),values);
             if(left != right){
-                while(left != right && left<=currentVars.get(var).getHigh() && left>=currentVars.get(var).getLow()){
+                while(left != right && left<currentVars.get(var).getHigh() && left>currentVars.get(var).getLow()){
                     if(left<right)
                         left++;
                     else if(left>right)
@@ -98,7 +98,7 @@ public class TestcaseGenerator {
                     if (!inputVariable.contains(rightVar))
                         process.push(rightVar);
                     int rightChange = values.get(rightVar);
-                    while (left != right && rightChange <= currentVars.get(rightVar).getHigh() && rightChange >= currentVars.get(rightVar).getLow()) {
+                    while (left != right && rightChange < currentVars.get(rightVar).getHigh() && rightChange > currentVars.get(rightVar).getLow()) {
                         if(left < right){
                             rightChange--;
                             values.put(rightVar,rightChange);
@@ -119,7 +119,7 @@ public class TestcaseGenerator {
                     right = rightValue(formula.getForm().get(var),values);
 
                     if(left != right){
-                        while(left != right && left<=currentVars.get(var).getHigh() && left>=currentVars.get(var).getLow()){
+                        while(left != right && left<currentVars.get(var).getHigh() && left>currentVars.get(var).getLow()){
                             if(left<right)
                                 left++;
                             else if(left>right)
@@ -167,9 +167,14 @@ public class TestcaseGenerator {
             int min= vars.get(var).getLow();
             Random random = new Random();
             int s = 0;
+//
+//            System.out.println(max);
+//            System.out.println(min);
 
-            if(min>=0)
+            if(min>0)
                 s =  random.nextInt(max)%(max-min+1) + min;
+            else if(min == max && min ==0)
+                s =0;
             else
                 s = random.nextInt(max - min) + min;
             //System.out.println(s);
