@@ -40,4 +40,6 @@ public interface VendingMachineService {
 
     void changeDispense(Order order);
 
+    void notEnoughDrink();
+
 }

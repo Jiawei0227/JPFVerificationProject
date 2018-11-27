@@ -32,6 +32,8 @@ public class PathStatus {
 
     public static final String POWER_SWITCH_ON = "PowerSwitchOn";
 
+    public static final String NOT_ENOUGH_DRINK = "NotEnoughDrink";
+
     public static final String POWER_SWITCH_OFF = "PowerSwitchOff";
 
     public static final String SELECTION_DISPLAY = "SelectionDisplay";

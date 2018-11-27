@@ -20,9 +20,9 @@ public class Order {
             empty = true;
             return;
         }
-        this.price = testCase.getValues().get("P");
-        this.number = testCase.getValues().get("N");
-        this.inputMoney = testCase.getValues().get("Amt");
+        this.price = testCase.getValues().getOrDefault("P",-1);
+        this.number = testCase.getValues().getOrDefault("N",-1);
+        this.inputMoney = testCase.getValues().getOrDefault("Amt",-1);
 
     }
 

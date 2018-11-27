@@ -22,16 +22,15 @@ public class VendingMachineImpl implements VendingMachineService {
         }
 
         this.selectDisplay();
+        this.showAvailableSoftDrink();
+        if(order.getNumber() > 10){
+            this.notEnoughDrink();
+            this.powerOff();
+            return resultMsg;
+        }else{
+            this.selectSoftDrink();
+        }
 
-        // for each item select the items
-//        order.getItems().forEach(e-> {
-//            for(int i = 0 ; i < e.getNumber(); i++){
-//                this.showAvailableSoftDrink();
-//                this.selectSoftDrink();
-//                this.availableDrinkAfterSell();
-//                this.showToSelectPanel();
-//            }
-//        });
 
         insertMoney();
         verifyAmount();
@@ -126,6 +125,11 @@ public class VendingMachineImpl implements VendingMachineService {
             resultMsg.setReturnMoney(order.getInputMoney());
         else
             resultMsg.setReturnMoney(reMoney);
+    }
+
+    @Override
+    public void notEnoughDrink() {
+        resultMsg.addPath(PathStatus.NOT_ENOUGH_DRINK);
     }
 
 

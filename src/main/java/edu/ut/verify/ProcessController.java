@@ -21,7 +21,7 @@ public class ProcessController {
     public static void main(String[] args) throws Exception{
 
         // parse file
-        String fileName = ProcessController.class.getClassLoader().getResource("VendingMachine3.xmi").getFile();
+        String fileName = ProcessController.class.getClassLoader().getResource("VendingMachine.xmi").getFile();
         File file = new File(fileName);
         StateChart st = XMIPaser.parser(file);
         String dataInput = ProcessController.class.getClassLoader().getResource("DataInput.txt").getFile();
@@ -60,7 +60,7 @@ public class ProcessController {
 
                 if(testCase.getValues() != null) {
                     int actualReturnMoney = re.getReturnMoney();
-                    int inputReturnMoney = testCase.getValues().get("ReturnMoney") == -1? testCase.getValues().get("Amt"):testCase.getValues().get("ReturnMoney");
+                    int inputReturnMoney = testCase.getValues().getOrDefault("ReturnMoney",Integer.MIN_VALUE) == -1? testCase.getValues().getOrDefault("Amt",-1):testCase.getValues().getOrDefault("ReturnMoney",Integer.MIN_VALUE);
 
                     System.out.println("Actual ReturnMoney :"+actualReturnMoney + " "+ (actualReturnMoney==inputReturnMoney?"==":"!=") +" Input ReturnMoney :" + inputReturnMoney);
                 }
