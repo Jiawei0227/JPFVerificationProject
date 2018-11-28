@@ -24,7 +24,7 @@ public class ProcessController {
         String fileName = ProcessController.class.getClassLoader().getResource("VendingMachine.xmi").getFile();
         File file = new File(fileName);
         StateChart st = XMIPaser.parser(file);
-        String dataInput = ProcessController.class.getClassLoader().getResource("DataInput.txt").getFile();
+        String dataInput = ProcessController.class.getClassLoader().getResource("TestInput.txt").getFile();
         st.parseDataInput(dataInput);
 
 

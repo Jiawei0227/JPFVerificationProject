@@ -25,6 +25,8 @@ public class StateChart {
 
     private Formula formula; //used to store relationship between variable
 
+    private Order orderVar;
+
     public Formula getFormula() {
         return formula;
     }
@@ -78,6 +80,7 @@ public class StateChart {
 
             boolean pred = false;
             boolean form = false;
+            boolean ord = false;
 
             try
             {
@@ -89,6 +92,7 @@ public class StateChart {
                 String eq[];
                 Predicate curPred;
                 formula = new Formula();
+                orderVar = new Order();
 
                 while ((line = br.readLine())  != null) {
 
@@ -101,6 +105,9 @@ public class StateChart {
                     } else if (splitLine[0].equals("Formulation")) {
                         pred = false;
                         form = true;
+                    } else if (splitLine[0].equals("Order")) {
+                        form = false;
+                        ord = true;
                     } else if (pred) {
 
                         System.out.println(splitLine[0]);
@@ -148,12 +155,21 @@ public class StateChart {
                         for (int i = 2; i < splitLine.length; i++) {
                             templeStr[i-2] = splitLine[i];
                         }
+                        String forVar = splitLine[0];
 
-                        formula.putFormula(splitLine[0], templeStr);
+                        formula.putFormula(forVar, templeStr);
                         //System.out.println(this.formula);
+                    } else if (ord) {
+
+                        String[] curOrd = line.split("\\s");
+                        orderVar.put(curOrd);
+
                     }
 
                 }
+                /*for (int i =0; i < orderVar.order.size(); i++) {
+                    System.out.println("string: "+orderVar.order.get(i)[0]+" "+orderVar.order.get(i)[1]);
+                }*/
 
             } catch (IOException e) {
                 e.printStackTrace();
