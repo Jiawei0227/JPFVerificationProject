@@ -1,5 +1,6 @@
 package edu.ut.verify.example;
 
+import edu.ut.verify.core.Sequence;
 import edu.ut.verify.core.TestCase;
 
 /**
@@ -17,7 +18,10 @@ public class Order {
 
     private int returnMoney;
 
+    private Sequence sequence;
+
     public Order(TestCase testCase){
+        this.sequence = testCase.getSequence();
         if(testCase.getValues() == null) {
             empty = true;
             return;
@@ -27,6 +31,18 @@ public class Order {
         this.inputMoney = testCase.getValues().getOrDefault("Amt",-1);
         this.returnMoney = testCase.getValues().getOrDefault("ReturnMoney",Integer.MIN_VALUE);
 
+    }
+
+    public String toString(){
+        return String.format("Order: empty %b, price: %d, number: %d, inputMoney: %d, returnMoney: %d",empty,price,number,inputMoney,returnMoney);
+    }
+
+    public Sequence getSequence() {
+        return sequence;
+    }
+
+    public void setSequence(Sequence sequence) {
+        this.sequence = sequence;
     }
 
     public int getReturnMoney() {

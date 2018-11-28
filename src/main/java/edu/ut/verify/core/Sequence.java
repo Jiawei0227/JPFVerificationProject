@@ -39,6 +39,10 @@ public class Sequence {
         sequence.remove(sequence.size()- 1);
     }
 
+    public String toString(){
+        return String.join(" -> ", sequence.stream().map(Transition::getEventName).collect(Collectors.toList()));
+    }
+
     public static Sequence clone(Sequence sequence){
         Sequence newSequence = new Sequence();
         for(Transition t : sequence.getSequence())

@@ -40,6 +40,15 @@ public class ProcessController {
 
     }
 
+    public static void orderEvaluator(List<Order> orders){
+        for(int i = 0 ; i < orders.size(); i++){
+            System.out.println("Valid Path "+(i));
+            orders.get(i).getSequence().printSequence();
+            System.out.println(orders.get(i));
+            System.out.println();
+        }
+    }
+
     public static void testCaseEvaluator(List<TestCase> testCases){
 
         int number = 0;
@@ -70,19 +79,6 @@ public class ProcessController {
             number++;
         }
 
-//        testCases.stream().filter(TestCase::isValid).forEach(e->{
-//            System.out.println("--------------------------------");
-//
-//            System.out.println("Variables : "+e.toString());
-//
-//            System.out.print("Transactions : ");
-//            e.getSequence().printSequence();
-//
-//            Order order = new Order(e);
-//            VendingMachineService vendingMachineService = new VendingMachineImpl();
-//            ResultMsg re = vendingMachineService.purchasing(order);
-//            System.out.println("Actual Path  : "+re.getPathStatus().getPathCoverage().toString());
-//            System.out.println("--------------------------------");
-//        });
+
     }
 }
