@@ -25,7 +25,7 @@ public class Order {
         this.price = testCase.getValues().getOrDefault("P",-1);
         this.number = testCase.getValues().getOrDefault("N",-1);
         this.inputMoney = testCase.getValues().getOrDefault("Amt",-1);
-        this.returnMoney = testCase.getValues().getOrDefault("returnMoney",Integer.MIN_VALUE);
+        this.returnMoney = testCase.getValues().getOrDefault("ReturnMoney",Integer.MIN_VALUE);
 
     }
 
