@@ -38,6 +38,7 @@ public class TestcaseGenerator {
 //            System.out.println("" + ord[0] +" "+ ord[1]);
 //        }
         List<Sequence> removeList = new ArrayList<>();
+        // filter path in wrong order
         for(Sequence se : sequenceList){
             int flag = 0;
             for(String[] ord : this.order.getOrder()){

@@ -13,6 +13,6 @@ Formulation:
 ReturnMoney = Amt - TotalMoney
 TotalMoney = N * P
 Order:
-ShowAvailableSoftDrink InsertMoney
-ShowAvailableSoftDrink AvailableDrinkAfterSell
+SelectSoftdrink InsertMoney
+SelectSoftdrink AvailableDrinkAfterSell
 InsertMoney AmountCount
