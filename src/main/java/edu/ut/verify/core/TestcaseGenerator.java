@@ -57,8 +57,11 @@ public class TestcaseGenerator {
                 }
             }
 
-            if(flag == -1)
+            if(flag == -1){
                 removeList.add(se);
+                TestCase tc = new TestCase(false,se,null);
+                this.caseList.add(tc);
+            }
         }
 
         sequenceList.removeAll(removeList);
