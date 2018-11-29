@@ -46,10 +46,10 @@ public class TestcaseGenerator {
                 int later = se.indexOfTransition(ord[1]);
 
                 if(former == -1 || later ==-1){
-                    if(former != later){
-                        flag = -1;
-                        break;
-                    }
+//                    if(former != later){
+//                        flag = -1;
+//                        break;
+//                    }
                 }
                 else if(former > later){
                     flag = -1;
