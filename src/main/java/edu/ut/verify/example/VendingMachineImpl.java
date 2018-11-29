@@ -31,19 +31,33 @@ public class VendingMachineImpl implements VendingMachineService {
             this.selectSoftDrink();
         }
 
+//        if(order.getNumber() >= 5) {
+//            availableDrinkAfterSell();
+//            showToSelectPanel();
+//        }
 
         insertMoney();
-        verifyAmount();
         int total = amountCount(order);
+
+        if(total >= 25)
+            verifyAmount();
+
 
         if(order.getInputMoney() < total){
             this.notEnoughMoney();
+            this.changeDispense(order);
         }else{
             this.vendingMachineBusy();
-            this.dispenseSoftdrink();
+
+            if(order.getInputMoney() == total){
+                this.noChangeDispense();
+            }else{
+                this.dispenseSoftdrink();
+                this.changeDispense(order);
+            }
+
         }
 
-        this.changeDispense(order);
         this.powerOff();
 
         //TODO service logic implementation a little bit rely on the order class input
@@ -114,7 +128,7 @@ public class VendingMachineImpl implements VendingMachineService {
 
     @Override
     public void dispenseSoftdrink() {
-        resultMsg.addPath(PathStatus.CHANGE_DISPENSE);
+        resultMsg.addPath(PathStatus.DISPENSE_SOFTDRINK);
     }
 
     @Override
@@ -130,6 +144,11 @@ public class VendingMachineImpl implements VendingMachineService {
     @Override
     public void notEnoughDrink() {
         resultMsg.addPath(PathStatus.NOT_ENOUGH_DRINK);
+    }
+
+    @Override
+    public void noChangeDispense() {
+        resultMsg.addPath(PathStatus.NO_CHANGE_DISPENSE);
     }
 
 

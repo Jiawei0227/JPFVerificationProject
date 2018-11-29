@@ -51,6 +51,7 @@ public class ProcessController {
 
     public static void testCaseEvaluator(List<TestCase> testCases){
 
+        System.out.println(testCases.size());
         int number = 0;
         for(TestCase testCase : testCases){
 

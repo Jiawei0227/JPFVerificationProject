@@ -40,7 +40,7 @@ public class PathStatus {
 
     public static final String SHOW_AVAILABLE_SOFT_DRINK = "ShowAvailableSoftDrink";
 
-    public static final String SELECT_SOFT_DRINK = "SelectSoftDrink";
+    public static final String SELECT_SOFT_DRINK = "SelectSoftdrink";
 
     public static final String INSERT_MONEY = "InsertMoney";
 
@@ -59,6 +59,8 @@ public class PathStatus {
     public static final String NOT_ENOUGH_MONEY = "NotEnoughMoney";
 
     public static final String CHANGE_DISPENSE = "ChangeDispense";
+
+    public static final String NO_CHANGE_DISPENSE = "NoChangeDispense";
 
 
 

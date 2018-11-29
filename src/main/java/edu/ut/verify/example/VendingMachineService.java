@@ -42,4 +42,6 @@ public interface VendingMachineService {
 
     void notEnoughDrink();
 
+    void noChangeDispense();
+
 }

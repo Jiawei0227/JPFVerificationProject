@@ -33,7 +33,7 @@ public class VendingMachineImplTest {
         String fileName = ProcessController.class.getClassLoader().getResource("VendingMachine.xmi").getFile();
         File file = new File(fileName);
         StateChart st = XMIPaser.parser(file);
-        String dataInput = ProcessController.class.getClassLoader().getResource("DataInput.txt").getFile();
+        String dataInput = ProcessController.class.getClassLoader().getResource("TestInput.txt").getFile();
         st.parseDataInput(dataInput);
 
 
@@ -44,9 +44,9 @@ public class VendingMachineImplTest {
 
         orders = new ArrayList<>();
 
-        tg.getCaseList().stream().filter(TestCase::isValid).forEach(e->{
-            orders.add(new Order(e));
-        });
+        tg.getCaseList().stream().filter(TestCase::isValid).forEach(e->
+            orders.add(new Order(e))
+        );
 
         testCaseEvaluator(tg.getCaseList());
 
@@ -81,10 +81,22 @@ public class VendingMachineImplTest {
     }
 
     @Test
-    public void notEnoughMoneyTest(){
+    public void notEnoughDrinkTest(){
         resultMsg = test(1);
         Assert.assertEquals(resultMsg.getPathStatus().toString(),order.getSequence().toString());
-;    }
+    }
+
+    @Test
+    public void noChangeDispense(){
+        resultMsg = test(2);
+        Assert.assertEquals(resultMsg.getPathStatus().toString(),order.getSequence().toString());
+    }
+
+    @Test
+    public void notEnoughMoney(){
+        resultMsg = test(3);
+        Assert.assertEquals(resultMsg.getPathStatus().toString(),order.getSequence().toString());
+    }
 
 
 
