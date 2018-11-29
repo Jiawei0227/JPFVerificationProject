@@ -10,6 +10,7 @@ public class TestcaseGenerator {
     private Set<String> allVariable;
     private Set<String> inputVariable;
     private List<TestCase> caseList;
+    private Order order;
 
     public TestcaseGenerator(StateMachine sm) throws NoInitialStateException {
         sm.process();
@@ -18,6 +19,7 @@ public class TestcaseGenerator {
         this.sequenceList = sm.getSequences();
         this.caseList = new ArrayList<>();
         this.inputVariable = new HashSet<>();
+        this.order = sm.getStateChart().getOrderVar();
         /*
         get variables not in the formula
         */
@@ -32,6 +34,34 @@ public class TestcaseGenerator {
 
     public void testGenerate(){
         //System.out.println(allVariable.toString());
+//        for(String[] ord : this.order.getOrder()){
+//            System.out.println("" + ord[0] +" "+ ord[1]);
+//        }
+        List<Sequence> removeList = new ArrayList<>();
+        for(Sequence se : sequenceList){
+            int flag = 0;
+            for(String[] ord : this.order.getOrder()){
+                int former = se.indexOfTransition(ord[0]);
+                int later = se.indexOfTransition(ord[1]);
+
+                if(former == -1 || later ==-1){
+                    if(former != later){
+                        flag = -1;
+                        break;
+                    }
+                }
+                else if(former > later){
+                    flag = -1;
+                    break;
+                }
+            }
+
+            if(flag == -1)
+                removeList.add(se);
+        }
+
+        sequenceList.removeAll(removeList);
+
         for(Sequence se : sequenceList){
             Map<String,Predicate> currentVars = new HashMap<>();//<Amt,Amt[0,-1000]>
             Map<String,Integer> values = new HashMap<>();// <Amt,10>
@@ -96,10 +126,12 @@ public class TestcaseGenerator {
         Stack<String> process = new Stack<>();
         for(String var : formula.getForm().keySet()){
             process.push(var);
+            //System.out.println(var);
         }
 
         while(!process.isEmpty()){
             String var = process.pop();
+            //System.out.println(var);
             int left = values.get(var);
             int right = rightValue(formula.getForm().get(var),values);
             if(left != right){

@@ -177,5 +177,12 @@ public class StateChart {
 
     }
 
+    public Order getOrderVar() {
+        return orderVar;
+    }
+
+    public void setOrderVar(Order orderVar) {
+        this.orderVar = orderVar;
+    }
 
 }

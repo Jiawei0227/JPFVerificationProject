@@ -62,4 +62,16 @@ public class Sequence {
         }
     }
 
+    public int indexOfTransition(String eventName){
+        int index = -1;
+
+        for(int i = 0;i<sequence.size();i++){
+            if(sequence.get(i).getEvent().getName().equals(eventName)){
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
+
 }
