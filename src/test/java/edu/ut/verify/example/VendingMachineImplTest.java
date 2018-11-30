@@ -96,11 +96,15 @@ public class VendingMachineImplTest {
     }
 
     @Test
-    public void regularPurchasing(){
+    public void regularPurchaseNotVerifyAmount(){
         resultMsg = test(4);
         Assert.assertEquals(resultMsg.getPathStatus().toString(),order.getSequence().toString());
     }
 
-
+    @Test
+    public void regularPurchaseVerifyAmount(){
+        resultMsg = test(5);
+        Assert.assertEquals(resultMsg.getPathStatus().toString(),order.getSequence().toString());
+    }
 
 }

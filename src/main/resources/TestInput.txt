@@ -9,7 +9,7 @@ NotEnoughMoney:ReturnMoney < 0
 ShowAvailableSoftDrink:P > 3
 ShowAvailableSoftDrink:P <= 6
 AmountCount:TotalMoney > 0
-VerifyAmount:Amt > 25
+VerifyAmount:Amt > 40
 NoChangeDispense:ReturnMoney = 0
 Formulation:
 ReturnMoney = Amt - TotalMoney
@@ -21,5 +21,5 @@ InsertMoney AvailableDrinkAfterSell
 ShowToSelectPanel InsertMoney
 ShowAvailableSoftDrink AvailableDrinkAfterSell
 SelfCircle:
-VerifyAmount:Amt < 25
+VerifyAmount:Amt < 40
 VerifyAmount:Amt > 0

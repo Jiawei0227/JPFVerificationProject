@@ -39,7 +39,7 @@ public class VendingMachineImpl implements VendingMachineService {
         insertMoney();
         int total = amountCount(order);
 
-        if(total >= 25)
+        if(order.getInputMoney() >= 40)
             verifyAmount();
 
 
