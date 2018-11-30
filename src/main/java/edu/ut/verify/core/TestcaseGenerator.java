@@ -71,7 +71,7 @@ public class TestcaseGenerator {
         for(Sequence se : sequenceList){
             Map<String,Predicate> currentVars = new HashMap<>();//<Amt,Amt[0,-1000]>
             Map<String,Integer> values = new HashMap<>();// <Amt,10>
-            int flag = -1;
+            int flag = 0;
 
             //find vars in current sequence
             for(Transition tran : se.getSequence()){
@@ -112,9 +112,9 @@ public class TestcaseGenerator {
                 //System.out.println("values");
                 for(String tran : this.scMap.keySet()){
                     if(se.indexOfTransition(tran) == -1){
-                        Predicate tempPrre = currentVars.get(this.scMap.get(tran).getVarName());
-                        tempPrre.setHigh(this.scMap.get(tran).getBoundary()[1]);
-                        tempPrre.setLow(this.scMap.get(tran).getBoundary()[0]);
+                        Predicate tempPre = currentVars.get(this.scMap.get(tran).getVarName());
+                        tempPre.setHigh(this.scMap.get(tran).getBoundary()[1]);
+                        tempPre.setLow(this.scMap.get(tran).getBoundary()[0]);
                     }
                 }
 
