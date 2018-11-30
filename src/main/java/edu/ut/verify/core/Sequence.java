@@ -1,5 +1,7 @@
 package edu.ut.verify.core;
 
+import edu.ut.verify.core.statechart.Transition;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;

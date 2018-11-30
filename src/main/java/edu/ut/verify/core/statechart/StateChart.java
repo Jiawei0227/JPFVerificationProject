@@ -1,5 +1,8 @@
-package edu.ut.verify.core;
+package edu.ut.verify.core.statechart;
 
+import edu.ut.verify.core.dataconstraint.Formula;
+import edu.ut.verify.core.dataconstraint.Order;
+import edu.ut.verify.core.dataconstraint.SelfCircle;
 import edu.ut.verify.core.state.EndState;
 import edu.ut.verify.core.state.StartState;
 import edu.ut.verify.core.state.State;
@@ -83,7 +86,7 @@ public class StateChart {
 
             for (int i = 0; i < tranList.size(); i ++){
 
-                if (tranList.get(i).event.getName().equals(trans))  return tranList.get(i);
+                if (tranList.get(i).getEvent().getName().equals(trans))  return tranList.get(i);
 
             }
         }
@@ -136,7 +139,7 @@ public class StateChart {
 
                         eq = splitLine[1].split("\\s");
 
-                        curPred = curTrans.event.getPredicate();
+                        curPred = curTrans.getEvent().getPredicate();
                         curPred.setVariable(eq[0]);
 
                         Integer boundary = Integer.parseInt(eq[2]);

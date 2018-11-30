@@ -1,4 +1,4 @@
-package edu.ut.verify.core;
+package edu.ut.verify.core.statechart;
 
 import edu.ut.verify.core.event.Event;
 import edu.ut.verify.core.state.State;

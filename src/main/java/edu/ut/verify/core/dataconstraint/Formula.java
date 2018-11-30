@@ -1,4 +1,4 @@
-package edu.ut.verify.core;
+package edu.ut.verify.core.dataconstraint;
 
 import java.util.HashMap;
 import java.util.Map;

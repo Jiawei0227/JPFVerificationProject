@@ -1,6 +1,6 @@
 package edu.ut.verify.core.event;
 
-import edu.ut.verify.core.Predicate;
+import edu.ut.verify.core.statechart.Predicate;
 
 /**
  * Created by Jerry Wang on 2018/11/5.

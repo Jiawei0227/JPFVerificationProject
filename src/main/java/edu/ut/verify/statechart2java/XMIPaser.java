@@ -4,12 +4,12 @@ package edu.ut.verify.statechart2java;
  * Created by Jerry Wang on 2018/11/5.
  */
 
-import edu.ut.verify.core.Transition;
+import edu.ut.verify.core.statechart.Transition;
 import edu.ut.verify.core.state.EndState;
 import edu.ut.verify.core.state.NState;
 import edu.ut.verify.core.state.StartState;
 import edu.ut.verify.core.state.State;
-import edu.ut.verify.core.StateChart;
+import edu.ut.verify.core.statechart.StateChart;
 import edu.ut.verify.core.event.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

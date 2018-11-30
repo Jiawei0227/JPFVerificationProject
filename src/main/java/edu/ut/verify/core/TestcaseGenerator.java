@@ -1,6 +1,11 @@
 package edu.ut.verify.core;
 
+import edu.ut.verify.core.dataconstraint.Formula;
+import edu.ut.verify.core.dataconstraint.Order;
+import edu.ut.verify.core.dataconstraint.SelfCircle;
 import edu.ut.verify.core.exception.NoInitialStateException;
+import edu.ut.verify.core.statechart.Predicate;
+import edu.ut.verify.core.statechart.Transition;
 
 import java.util.*;
 

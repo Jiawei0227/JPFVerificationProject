@@ -2,6 +2,8 @@ package edu.ut.verify.core;
 
 import edu.ut.verify.core.exception.NoInitialStateException;
 import edu.ut.verify.core.state.State;
+import edu.ut.verify.core.statechart.StateChart;
+import edu.ut.verify.core.statechart.Transition;
 
 import java.util.*;
 
@@ -82,7 +84,7 @@ public class StateMachine {
 
             //System.out.println(currentState.getName() + " -> " + transition.getEvent().getName());
             sequence.addTransition(transition);
-            State nextState = transition.toState;
+            State nextState = transition.getToState();
 
             if(countMap.getOrDefault(transition,0) == circleCount) {
                 sequence.removeLastTransition();
@@ -98,7 +100,7 @@ public class StateMachine {
             countMap.put(transition, countMap.get(transition) - 1);
            // System.out.println(countMap.get(nextState));
 
-            this.currentState = transition.fromState;
+            this.currentState = transition.getFromState();
             sequence.removeLastTransition();
         }
     }

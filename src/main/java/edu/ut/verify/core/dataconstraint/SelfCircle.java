@@ -1,4 +1,4 @@
-package edu.ut.verify.core;
+package edu.ut.verify.core.dataconstraint;
 
 
 public class SelfCircle {

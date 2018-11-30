@@ -1,7 +1,4 @@
-package edu.ut.verify.core;
-
-import java.util.HashMap;
-import java.util.Map;
+package edu.ut.verify.core.statechart;
 
 /**
  * Created by Jerry Wang on 2018/11/5.
