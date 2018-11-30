@@ -27,6 +27,16 @@ public class StateChart {
 
     private Order orderVar;
 
+    private SelfCircle selfCircle;
+
+    public SelfCircle getSelfCircle() {
+        return selfCircle;
+    }
+
+    public void setSelfCircle(SelfCircle selfCircle) {
+        this.selfCircle = selfCircle;
+    }
+
     public Formula getFormula() {
         return formula;
     }
