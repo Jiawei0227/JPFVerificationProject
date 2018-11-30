@@ -11,7 +11,7 @@ public class TestcaseGenerator {
     private Set<String> inputVariable;
     private List<TestCase> caseList;
     private Order order;
-    private Map<String,SelfCircle> scMap;
+    private Map<String,SelfCircle> scMap; //Amt,{VerifyAmount, amt [0,24]}
 
     public TestcaseGenerator(StateMachine sm) throws NoInitialStateException {
         sm.process();
@@ -110,6 +110,15 @@ public class TestcaseGenerator {
             }
             else{
                 //System.out.println("values");
+                for(String tran : this.scMap.keySet()){
+                    if(se.indexOfTransition(tran) == -1){
+                        Predicate tempPrre = currentVars.get(this.scMap.get(tran).getVarName());
+                        tempPrre.setHigh(this.scMap.get(tran).getBoundary()[1]);
+                        tempPrre.setLow(this.scMap.get(tran).getBoundary()[0]);
+                    }
+                }
+
+                System.out.println(currentVars.toString());
                 assignValue(currentVars,values);
 //                System.out.println(values.keySet().toString());
 //                System.out.println(values.values().toString());
