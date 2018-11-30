@@ -109,7 +109,7 @@ public class XMIPaser {
                 Event event = transition.getEvent();
                 if (event.getName() !=  null){
 
-                    System.out.print("\t"+j+" transition name: " + event.getName());
+                   // System.out.print("\t"+j+" transition name: " + event.getName());
                 }
                 //System.out.println();
                 //System.out.println("\tid: " + event.getId());

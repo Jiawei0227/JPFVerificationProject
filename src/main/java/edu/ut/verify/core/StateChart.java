@@ -3,14 +3,12 @@ package edu.ut.verify.core;
 import edu.ut.verify.core.state.EndState;
 import edu.ut.verify.core.state.StartState;
 import edu.ut.verify.core.state.State;
-import org.junit.runners.Parameterized;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -72,6 +70,10 @@ public class StateChart {
         this.stateTransitionMap = stateTransitionMap;
     }
 
+    public StateChart(){
+        selfCircleMap = new HashMap<>();
+    }
+
 
     public Transition getTransition(String trans) {
 
@@ -96,6 +98,7 @@ public class StateChart {
             boolean pred = false;
             boolean form = false;
             boolean ord = false;
+            boolean selfcircle = false;
 
             try
             {
@@ -123,9 +126,12 @@ public class StateChart {
                     } else if (splitLine[0].equals("Order")) {
                         form = false;
                         ord = true;
+                    } else if (splitLine[0].equals("SelfCircle")) {
+                        selfcircle = true;
+                        ord = false;
                     } else if (pred) {
 
-                        System.out.println(splitLine[0]);
+                        //System.out.println(splitLine[0]);
                         Transition curTrans = getTransition(splitLine[0]);
 
                         eq = splitLine[1].split("\\s");
@@ -179,6 +185,40 @@ public class StateChart {
                         String[] curOrd = line.split("\\s");
                         orderVar.put(curOrd);
 
+                    } else if (selfcircle){
+
+
+                        eq = splitLine[1].split("\\s");
+
+                        SelfCircle selfCircle = selfCircleMap.getOrDefault(splitLine[0],new SelfCircle(splitLine[0],eq[0]));
+
+                        Integer boundary = Integer.parseInt(eq[2]);
+
+                        if (eq[1].equals("<=")){
+                            // <=
+                            selfCircle.setHigh(boundary);
+
+                        } else if (eq[1].equals(">=")) {
+                            // >=
+                            selfCircle.setLow(boundary);
+
+                        } else if (eq[1].equals("<")) {
+                            // <
+                            selfCircle.setHigh(boundary-1);
+
+                        } else if (eq[1].equals(">")) {
+                            // >
+                            selfCircle.setLow(boundary+1);
+
+                        } else if (eq[1].equals("=")) {
+                            // =
+                            selfCircle.setLow(boundary);
+                            selfCircle.setHigh(boundary);
+                        }
+
+                        selfCircleMap.put(splitLine[0],selfCircle);
+
+
                     }
 
                 }
@@ -190,6 +230,15 @@ public class StateChart {
                 e.printStackTrace();
             }
 
+    }
+
+    public void printSelfCircleMap(){
+        System.out.println(selfCircleMap.size());
+
+        selfCircleMap.entrySet().forEach(e->{
+            System.out.print(e.getKey() + " : ");
+            System.out.println(e.getValue());
+        });
     }
 
     public Order getOrderVar() {

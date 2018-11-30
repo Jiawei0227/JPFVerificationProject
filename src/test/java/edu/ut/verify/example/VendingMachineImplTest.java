@@ -6,10 +6,7 @@ import edu.ut.verify.core.StateMachine;
 import edu.ut.verify.core.TestCase;
 import edu.ut.verify.core.TestcaseGenerator;
 import edu.ut.verify.statechart2java.XMIPaser;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -95,6 +92,12 @@ public class VendingMachineImplTest {
     @Test
     public void notEnoughMoney(){
         resultMsg = test(3);
+        Assert.assertEquals(resultMsg.getPathStatus().toString(),order.getSequence().toString());
+    }
+
+    @Test
+    public void regularPurchasing(){
+        resultMsg = test(4);
         Assert.assertEquals(resultMsg.getPathStatus().toString(),order.getSequence().toString());
     }
 

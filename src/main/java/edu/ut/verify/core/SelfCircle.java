@@ -49,4 +49,11 @@ public class SelfCircle {
     public void setBoundary(int[] boundary) {
         this.boundary = boundary;
     }
+
+    public String toString(){
+        if(this.varName != null)
+            return ""+boundary[0]+" < "+varName+" < "+boundary[1];
+        else
+            return "";
+    }
 }
