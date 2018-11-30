@@ -112,14 +112,20 @@ public class TestcaseGenerator {
                 //System.out.println("values");
                 for(String tran : this.scMap.keySet()){
                     if(se.indexOfTransition(tran) == -1){
+                        //se.printSequence();
                         Predicate tempPre = currentVars.get(this.scMap.get(tran).getVarName());
                         tempPre.setHigh(this.scMap.get(tran).getBoundary()[1]);
                         tempPre.setLow(this.scMap.get(tran).getBoundary()[0]);
+                        //System.out.println(currentVars.toString());
                     }
                 }
 
                 //System.out.println(currentVars.toString());
                 assignValue(currentVars,values);
+                while(!adjustValue(values,this.formula,this.inputVariable,currentVars)){
+                    assignValue(currentVars,values);
+                }
+                //se.printSequence();
 //                System.out.println(values.keySet().toString());
 //                System.out.println(values.values().toString());
                 if(adjustValue(values,this.formula,this.inputVariable,currentVars)){
