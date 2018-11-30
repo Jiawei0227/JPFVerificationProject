@@ -22,5 +22,6 @@ ShowToSelectPanel InsertMoney
 ShowAvailableSoftDrink AvailableDrinkAfterSell
 SelfCircle:
 VerifyAmount:Amt < 25
+VerifyAmount:Amt > 0
 
 

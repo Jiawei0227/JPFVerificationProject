@@ -11,6 +11,7 @@ public class TestcaseGenerator {
     private Set<String> inputVariable;
     private List<TestCase> caseList;
     private Order order;
+    private Map<String,SelfCircle> scMap;
 
     public TestcaseGenerator(StateMachine sm) throws NoInitialStateException {
         sm.process();
@@ -20,6 +21,7 @@ public class TestcaseGenerator {
         this.caseList = new ArrayList<>();
         this.inputVariable = new HashSet<>();
         this.order = sm.getStateChart().getOrderVar();
+        this.scMap= sm.getStateChart().getSelfCircleMap();
         /*
         get variables not in the formula
         */
@@ -69,6 +71,7 @@ public class TestcaseGenerator {
         for(Sequence se : sequenceList){
             Map<String,Predicate> currentVars = new HashMap<>();//<Amt,Amt[0,-1000]>
             Map<String,Integer> values = new HashMap<>();// <Amt,10>
+            int flag = -1;
 
             //find vars in current sequence
             for(Transition tran : se.getSequence()){
@@ -86,7 +89,6 @@ public class TestcaseGenerator {
             // invalid path detect
             else if(currentVars.size() != this.allVariable.size()){
                 //se.printSequence();
-                int flag =1;
                 for(String var_cur : currentVars.keySet()){
                     if(!inputVariable.contains(var_cur)){
                         flag = -1;

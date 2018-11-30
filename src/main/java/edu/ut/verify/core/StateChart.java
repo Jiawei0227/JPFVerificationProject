@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -27,14 +28,14 @@ public class StateChart {
 
     private Order orderVar;
 
-    private SelfCircle selfCircle;
+    private Map<String,SelfCircle> selfCircleMap;
 
-    public SelfCircle getSelfCircle() {
-        return selfCircle;
+    public Map<String, SelfCircle> getSelfCircleMap() {
+        return selfCircleMap;
     }
 
-    public void setSelfCircle(SelfCircle selfCircle) {
-        this.selfCircle = selfCircle;
+    public void setSelfCircleMap(Map<String, SelfCircle> selfCircleMap) {
+        this.selfCircleMap = selfCircleMap;
     }
 
     public Formula getFormula() {
