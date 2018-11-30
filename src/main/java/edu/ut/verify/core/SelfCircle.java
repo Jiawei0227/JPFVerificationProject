@@ -8,10 +8,12 @@ public class SelfCircle {
      */
     private String tranName;
     private String varName;
-    private String[] boundary;
+    private int[] boundary;
 
-    public SelfCircle(String tranName, String varName,String[] boundary){
-        this.boundary = boundary;
+    public SelfCircle(String tranName, String varName){
+        this.boundary = new int[2];
+        this.boundary[0] = -200;
+        this.boundary[1] = 200;
         this.tranName = tranName;
         this.varName = varName;
     }
@@ -32,11 +34,19 @@ public class SelfCircle {
         this.varName = varName;
     }
 
-    public String[] getBoundary() {
+    public void setHigh(int high){
+        this.boundary[1] = high;
+    }
+
+    public void setLow(int low){
+        this.boundary[0] = low;
+    }
+
+    public int[] getBoundary() {
         return boundary;
     }
 
-    public void setBoundary(String[] boundary) {
+    public void setBoundary(int[] boundary) {
         this.boundary = boundary;
     }
 }

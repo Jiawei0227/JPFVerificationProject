@@ -3,6 +3,7 @@ package edu.ut.verify.core;
 import edu.ut.verify.core.state.EndState;
 import edu.ut.verify.core.state.StartState;
 import edu.ut.verify.core.state.State;
+import org.junit.runners.Parameterized;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -28,6 +29,9 @@ public class StateChart {
 
     private Order orderVar;
 
+    /**
+     *String : transition name
+     */
     private Map<String,SelfCircle> selfCircleMap;
 
     public Map<String, SelfCircle> getSelfCircleMap() {
