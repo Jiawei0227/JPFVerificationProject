@@ -75,6 +75,7 @@ public class VendingMachineImplTest {
     public void noInputDataTest(){
         resultMsg = test(0);
         Assert.assertEquals(resultMsg.getPathStatus().toString(),order.getSequence().toString());
+        Assert.assertEquals(resultMsg.getReturnMoney(), order.getReturnMoney());
     }
 
     @Test
@@ -87,24 +88,84 @@ public class VendingMachineImplTest {
     public void noChangeDispense(){
         resultMsg = test(2);
         Assert.assertEquals(resultMsg.getPathStatus().toString(),order.getSequence().toString());
+        Assert.assertEquals(resultMsg.getReturnMoney(), order.getReturnMoney());
     }
 
     @Test
-    public void notEnoughMoney(){
+    public void notEnoughMoneyNotVerify(){
         resultMsg = test(3);
         Assert.assertEquals(resultMsg.getPathStatus().toString(),order.getSequence().toString());
+        Assert.assertEquals(resultMsg.getReturnMoney(), order.getReturnMoney());
     }
 
+
     @Test
-    public void regularPurchaseNotVerifyAmount(){
+    public void notVerifyAmountPurchase(){
         resultMsg = test(4);
         Assert.assertEquals(resultMsg.getPathStatus().toString(),order.getSequence().toString());
+        Assert.assertEquals(resultMsg.getReturnMoney(), order.getReturnMoney());
     }
 
     @Test
-    public void regularPurchaseVerifyAmount(){
+    public void verifyAmountNoChangePurchase(){
         resultMsg = test(5);
         Assert.assertEquals(resultMsg.getPathStatus().toString(),order.getSequence().toString());
+        Assert.assertEquals(resultMsg.getReturnMoney(), order.getReturnMoney());
     }
 
+    @Test
+    public void notEnoughMoneyVerify(){
+        resultMsg = test(6);
+        Assert.assertEquals(resultMsg.getPathStatus().toString(),order.getSequence().toString());
+        Assert.assertEquals(resultMsg.getReturnMoney(), order.getReturnMoney());
+    }
+
+    @Test
+    public void regularPurchaseVerifyAmountChange(){
+        resultMsg = test(7);
+        Assert.assertEquals(resultMsg.getPathStatus().toString(),order.getSequence().toString());
+        Assert.assertEquals(resultMsg.getReturnMoney(), order.getReturnMoney());
+    }
+
+    @Test
+    public void availableNoChangeNoVerify(){
+        resultMsg = test(8);
+        Assert.assertEquals(resultMsg.getPathStatus().toString(),order.getSequence().toString());
+        Assert.assertEquals(resultMsg.getReturnMoney(), order.getReturnMoney());
+    }
+
+    @Test
+    public void availableNoVerifyNotEnoughMoney(){
+        resultMsg = test(9);
+        Assert.assertEquals(resultMsg.getPathStatus().toString(),order.getSequence().toString());
+        Assert.assertEquals(resultMsg.getReturnMoney(), order.getReturnMoney());
+    }
+
+    @Test
+    public void availableNoVerifyChangePurchase(){
+        resultMsg = test(10);
+        Assert.assertEquals(resultMsg.getPathStatus().toString(),order.getSequence().toString());
+        Assert.assertEquals(resultMsg.getReturnMoney(), order.getReturnMoney());
+    }
+
+    @Test
+    public void availableVerifyNoChangePurchase(){
+        resultMsg = test(11);
+        Assert.assertEquals(resultMsg.getPathStatus().toString(),order.getSequence().toString());
+        Assert.assertEquals(resultMsg.getReturnMoney(), order.getReturnMoney());
+    }
+
+    @Test
+    public void availableVerifyNotEnoughMoney(){
+        resultMsg = test(12);
+        Assert.assertEquals(resultMsg.getPathStatus().toString(),order.getSequence().toString());
+        Assert.assertEquals(resultMsg.getReturnMoney(), order.getReturnMoney());
+    }
+
+    @Test
+    public void availableVerifyEnoughPurchase(){
+        resultMsg = test(13);
+        Assert.assertEquals(resultMsg.getPathStatus().toString(),order.getSequence().toString());
+        Assert.assertEquals(resultMsg.getReturnMoney(), order.getReturnMoney());
+    }
 }

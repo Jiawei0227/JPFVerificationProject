@@ -31,15 +31,15 @@ public class VendingMachineImpl implements VendingMachineService {
             this.selectSoftDrink();
         }
 
-//        if(order.getNumber() >= 5) {
-//            availableDrinkAfterSell();
-//            showToSelectPanel();
-//        }
+        if(order.getNumber() >= 5) {
+            availableDrinkAfterSell();
+            showToSelectPanel();
+        }
 
         insertMoney();
         int total = amountCount(order);
 
-        if(order.getInputMoney() >= 40)
+        if(order.getInputMoney() >= 25)
             verifyAmount();
 
 

@@ -6,10 +6,12 @@ InsertMoney:Amt >= 0
 VendingMachineBusy:ReturnMoney >= 0
 DispenseSoftDrink:ReturnMoney > 0
 NotEnoughMoney:ReturnMoney < 0
-ShowAvailableSoftDrink:P > 3
-ShowAvailableSoftDrink:P <= 6
+ShowAvailableSoftDrink:P >= 3
+ShowAvailableSoftDrink:P <= 7
 AmountCount:TotalMoney > 0
-VerifyAmount:Amt > 40
+VerifyAmount:Amt > 25
+AvailableDrinkAfterSell:N >= 5
+AvailableDrinkAfterSell:N <= 10
 NoChangeDispense:ReturnMoney = 0
 Formulation:
 ReturnMoney = Amt - TotalMoney
@@ -17,9 +19,10 @@ TotalMoney = N * P
 Order:
 SelectSoftdrink InsertMoney
 InsertMoney VerifyAmount
-InsertMoney AvailableDrinkAfterSell
 ShowToSelectPanel InsertMoney
 ShowAvailableSoftDrink AvailableDrinkAfterSell
 SelfCircle:
-VerifyAmount:Amt < 40
+VerifyAmount:Amt < 25
 VerifyAmount:Amt > 0
+AvailableDrinkAfterSell:N < 5
+AvailableDrinkAfterSell:N > 0

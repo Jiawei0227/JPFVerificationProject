@@ -20,16 +20,21 @@ public class Order {
 
     private Sequence sequence;
 
-    public Order(TestCase testCase){
+    public Order(TestCase testCase) {
         this.sequence = testCase.getSequence();
-        if(testCase.getValues() == null) {
+        if (testCase.getValues() == null) {
             empty = true;
             return;
         }
-        this.price = testCase.getValues().getOrDefault("P",-1);
-        this.number = testCase.getValues().getOrDefault("N",-1);
-        this.inputMoney = testCase.getValues().getOrDefault("Amt",-1);
-        this.returnMoney = testCase.getValues().getOrDefault("ReturnMoney",Integer.MIN_VALUE);
+        this.price = testCase.getValues().getOrDefault("P", -1);
+        this.number = testCase.getValues().getOrDefault("N", -1);
+        this.inputMoney = testCase.getValues().getOrDefault("Amt", -1);
+
+        if (testCase.getValues().getOrDefault("ReturnMoney", Integer.MIN_VALUE) < 0){
+            this.returnMoney = this.inputMoney;
+        }else{
+            this.returnMoney = testCase.getValues().getOrDefault("ReturnMoney", Integer.MIN_VALUE);
+        }
 
     }
 
