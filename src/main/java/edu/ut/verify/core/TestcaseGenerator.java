@@ -118,7 +118,7 @@ public class TestcaseGenerator {
                     }
                 }
 
-                System.out.println(currentVars.toString());
+                //System.out.println(currentVars.toString());
                 assignValue(currentVars,values);
 //                System.out.println(values.keySet().toString());
 //                System.out.println(values.values().toString());
