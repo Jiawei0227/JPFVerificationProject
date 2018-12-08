@@ -1,9 +1,8 @@
 package edu.ut.verify;
 
-import edu.ut.verify.core.statechart.StateChart;
 import edu.ut.verify.core.StateMachine;
 import edu.ut.verify.core.TestCase;
-import edu.ut.verify.core.TestcaseGenerator;
+import edu.ut.verify.core.statechart.StateChart;
 import edu.ut.verify.example.Order;
 import edu.ut.verify.example.ResultMsg;
 import edu.ut.verify.example.VendingMachineImpl;
@@ -21,22 +20,25 @@ public class ProcessController {
     public static void main(String[] args) throws Exception{
 
         // parse file
-        String fileName = ProcessController.class.getClassLoader().getResource("VendingMachine.xmi").getFile();
+        String fileName = ProcessController.class.getClassLoader().getResource("VendingMachine2.xmi").getFile();
         File file = new File(fileName);
         StateChart st = XMIPaser.parser(file);
         String dataInput = ProcessController.class.getClassLoader().getResource("DataInput.txt").getFile();
-        st.parseDataInput(dataInput);
+
+        //st.parseDataInput(dataInput);
 
 
         // generate StateMachine Path
         StateMachine stateMachine = new StateMachine(st);
-        TestcaseGenerator tg = new TestcaseGenerator(stateMachine);
-        tg.testGenerate();
+        stateMachine.process();
+        stateMachine.printSequence();
+        //TestcaseGenerator tg = new TestcaseGenerator(stateMachine);
+        //tg.testGenerate();
         //System.out.println(tg.getCaseList().get(1).toString());
 
 
         // testcase generate
-        testCaseEvaluator(tg.getCaseList());
+        //testCaseEvaluator(tg.getCaseList());
 
     }
 

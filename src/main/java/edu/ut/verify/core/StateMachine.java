@@ -92,7 +92,7 @@ public class StateMachine {
             }
 
 
-            countMap.put(transition, countMap.getOrDefault(nextState, 0 ) + 1);
+            countMap.put(transition, countMap.getOrDefault(transition, 0 ) + 1);
             //dfs
             this.currentState = nextState;
             dfs(sequence, countMap);

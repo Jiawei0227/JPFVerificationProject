@@ -60,8 +60,6 @@ public class VendingMachineImpl implements VendingMachineService {
 
         this.powerOff();
 
-        //TODO service logic implementation a little bit rely on the order class input
-
         return this.resultMsg;
     }
 

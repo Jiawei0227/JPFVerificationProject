@@ -21,7 +21,7 @@ SelectSoftdrink InsertMoney
 InsertMoney VerifyAmount
 ShowToSelectPanel InsertMoney
 ShowAvailableSoftDrink AvailableDrinkAfterSell
-SelfCircle:
+PathSelection:
 VerifyAmount:Amt < 25
 VerifyAmount:Amt > 0
 AvailableDrinkAfterSell:N < 5

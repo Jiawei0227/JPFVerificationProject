@@ -57,19 +57,6 @@ public class VendingMachineImplTest {
 
     }
 
-    public ResultMsg test(int index){
-        order = orders.get(index);
-        VendingMachineService vendingMachineService = new VendingMachineImpl();
-        return vendingMachineService.purchasing(order);
-    }
-
-    @After
-    public void printPath(){
-        System.out.println("===========================================================================================");
-        System.out.println("PARAMETERS    : " + order);
-        System.out.println("ACTUAL PATH   : "+resultMsg.getPathStatus());
-        System.out.println("EXPECTED PATH : " + order.getSequence().toString());
-    }
 
     @Test
     public void noInputDataTest(){
@@ -167,5 +154,19 @@ public class VendingMachineImplTest {
         resultMsg = test(13);
         Assert.assertEquals(resultMsg.getPathStatus().toString(),order.getSequence().toString());
         Assert.assertEquals(resultMsg.getReturnMoney(), order.getReturnMoney());
+    }
+
+    private ResultMsg test(int index){
+        order = orders.get(index);
+        VendingMachineService vendingMachineService = new VendingMachineImpl();
+        return vendingMachineService.purchasing(order);
+    }
+
+    @After
+    public void printPath(){
+        System.out.println("===========================================================================================");
+        System.out.println("PARAMETERS    : " + order);
+        System.out.println("ACTUAL PATH   : "+resultMsg.getPathStatus());
+        System.out.println("EXPECTED PATH : " + order.getSequence().toString());
     }
 }

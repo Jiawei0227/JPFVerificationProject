@@ -129,7 +129,7 @@ public class StateChart {
                     } else if (splitLine[0].equals("Order")) {
                         form = false;
                         ord = true;
-                    } else if (splitLine[0].equals("SelfCircle")) {
+                    } else if (splitLine[0].equals("PathSelection")) {
                         selfcircle = true;
                         ord = false;
                     } else if (pred) {
